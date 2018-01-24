@@ -121,6 +121,125 @@ write.csv(year.D3.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_de
 
 year.D4.loan <- Denv_4$Year
 write.csv(year.D4.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/yearD4_loan.csv")
+#----------------------------------
+
+## Gen E con pais y año
+
+# Datos del Gen E
+
+dat_genE <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/Disimilares97.csv", header = T)
+
+# Secuencias del Gen E
+
+seq_genE <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/seq_Disimilaridad97.txt", header= T, sep=" ")
+
+# Datos del gen E que tengan pais y ano
+
+lo_an <- which(is.na(dat_genE$Country)==F & is.na(dat_genE$Year)==F)
+
+dat_loan <- dat_genE[lo_an,] 
+
+write.csv(dat_loan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Country_year.csv")
+
+# Datos del gen E que tengan pais y año por cada serotipo
+
+Denv_1 <- dat_loan[which(dat_loan$Serotype=="DENV_1"),]
+
+Denv_2 <- dat_loan[which(dat_loan$Serotype=="DENV_2"),]
+
+Denv_3 <- dat_loan[which(dat_loan$Serotype=="DENV_3"),]
+
+Denv_4 <- dat_loan[which(dat_loan$Serotype=="DENV_4"),]
+
+# Secuencias del Gen E que tienen pais y ano
+
+position_loan <- vector()
+for(i in 1:length(dat_loan$N_Accesion)){
+  position_loan[i] <- which(seq_genE$id==dat_loan$N_Accesion[i])
+}
+
+seq_genE_loan <- seq_genE[position_loan,]
+
+write.table(seq_genE_loan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_paan.txt")
+
+# Secuencias del Gen E que tienen pais y ano por serotipos
+# Denv1
+position_denv1 <- vector()
+for(i in 1:length(Denv_1$N_Accesion)){
+  position_denv1[i] <- which(seq_genE_loan$id==Denv_1$N_Accesion[i])
+}
+
+seq_denv1 <- seq_genE_loan[position_denv1,]
+
+write.table(seq_denv1, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv1_paan.txt")
+
+# Denv2
+position_denv2 <- vector()
+for(i in 1:length(Denv_2$N_Accesion)){
+  position_denv2[i] <- which(seq_genE_loan$id==Denv_2$N_Accesion[i])
+}
+
+seq_denv2 <- seq_genE_loan[position_denv2,]
+
+write.table(seq_denv2, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv2_paan.txt")
+
+# Denv3
+position_denv3 <- vector()
+for(i in 1:length(Denv_3$N_Accesion)){
+  position_denv3[i] <- which(seq_genE_loan$id==Denv_3$N_Accesion[i])
+}
+
+seq_denv3 <- seq_genE_loan[position_denv3,]
+
+write.table(seq_denv3, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv3_paan.txt")
+
+# Denv4
+position_denv4 <- vector()
+for(i in 1:length(Denv_4$N_Accesion)){
+  position_denv4[i] <- which(seq_genE_loan$id==Denv_4$N_Accesion[i])
+}
+
+seq_denv4 <- seq_genE_loan[position_denv4,]
+
+write.table(seq_denv4, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv4_paan.txt")
+#-----------------------------------------
+##  VECTORES DE COORDENADAS GEOGRAFICAS ##
+
+#GEN E
+dge_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Country_year.csv", header = T)
+Coordenadas_loan <- dge_loan[,c(11,16,15)]
+
+write.csv(Coordenadas_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Coordenadas_paan.csv")
+
+CoordenadasD1_loan <- Denv_1[,c(10,15,14)] 
+write.csv(CoordenadasD1_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/CoordenadasD1_paan.csv")
+
+CoordenadasD2_loan <- Denv_2[,c(10,15,14)] 
+write.csv(CoordenadasD2_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/CoordenadasD2_paan.csv")
+
+CoordenadasD3_loan <- Denv_3[,c(10,15,14)] 
+write.csv(CoordenadasD3_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/CoordenadasD3_paan.csv")
+
+CoordenadasD4_loan <- Denv_4[,c(10,15,14)] 
+write.csv(CoordenadasD4_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/CoordenadasD4_paan.csv")
+#---------------------------------------
+
+## VECTORES DE AÑOS PARA DIST TEMPORAL ##
+
+year.E.loan <- dat_loan$Year
+write.csv(year.E.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/year_paan.csv")
+
+year.D1.loan <- Denv_1$Year
+write.csv(year.D1.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/yearD1_paan.csv")
+
+year.D2.loan <- Denv_2$Year
+write.csv(year.D2.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/yearD2_paan.csv")
+
+year.D3.loan <- Denv_3$Year
+write.csv(year.D3.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/yearD3_paan.csv")
+
+year.D4.loan <- Denv_4$Year
+write.csv(year.D4.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/yearD4_paan.csv")
 
 ###################
 ###  GENOMA    ####
