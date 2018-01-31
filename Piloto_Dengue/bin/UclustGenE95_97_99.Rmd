@@ -46,6 +46,9 @@ write.csv(Dis_97, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descarg
 
 Dis_97[,2:21]
 
+Dis_97[c(2,5,9,10,11)]
+write.csv(Dis_97[c(2,5,9,10,11)], file = "/home/andrea/LSB/Piloto_Dengue/data/tablas/Secuencias_genE.csv")
+
 ```
 **Tabla 1.** Datos de secuencias del Gen E 97% disimilares.
 
