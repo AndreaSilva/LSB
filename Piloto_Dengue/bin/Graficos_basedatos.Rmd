@@ -53,9 +53,11 @@ serotype <- data.frame(count_data, Name_serotype)
 library("ggplot2")
 
 plot_serotype <- ggplot(data = serotype[3:7,], aes(x= Name_serotype, y = count_data))+
-  geom_bar(stat = "identity", fill="steelblue")+
-  labs(x= "Serotypes", y= "Data Number")+
-  theme_minimal()
+  geom_bar(stat = "identity", fill="turquoise4")+
+  labs(x= "Serotipos", y= "Numero de datos")+
+  ggtitle("Número de datos por Serotipos")+
+  theme_minimal()+
+  theme(plot.title = element_text(hjust=0.5))
 
 plot_serotype
 
@@ -103,11 +105,14 @@ for(i in 1:length(Genes)){
 Genes.length <- transform(Genes.length, gene_name= reorder(gene_name, +gene_count))
 ggplot(data = Genes.length, aes(x = gene_name, y = gene_count, color=gene_name)) +
   geom_bar(stat = "identity", fill="white")+
-  labs(x= "Gene", y= "Data Number")+
+  labs(x= "Genes", y= "Numero de Datos")+
   scale_color_grey(start= 0.7, end=0.1)+
+  ggtitle("Número de datos por Gen-es")+
   theme_classic()+
+  theme(plot.title = element_text(hjust=0.5))+
   theme(legend.position="none")+
   coord_flip()
+
 
 ```
 
@@ -202,14 +207,17 @@ for(i in 1:length(Country_names)){
 fre.country <- na.omit(fre.country)
 
 # GRAFICA MAPA-MUNDI SIN DIFERENCIADO POR SEROTIPOS
-
+library(ggthemes)
 map.world <- map_data(map="world")
 
 pf <- ggplot()+ 
   #theme(legend.position="none")+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   geom_point(data= fre.country, aes(x=lon, y=lat, size=number_cases), color="coral1" , alpha=0.5)+
-  scale_size(name="Number of cases")
+  scale_size(name="Número de casos")+
+  ggtitle("Número de casos reportados por paises")+
+  theme_tufte()+
+  theme(plot.title = element_text(hjust=0.5))
 
 pf
 
@@ -236,7 +244,7 @@ data.mundi1 <- data.frame()
 
 for(i in 1:length(Country_names)){
   mini.data <- datos[which(datos$Serotype == "DENV_1" & datos$Country == Country_names[i]),]
-  data.mundi1[i, "Serotipe"] <- mini.data$Serotype[1]
+  data.mundi1[i, "Serotipos"] <- mini.data$Serotype[1]
   data.mundi1[i,"Country_names"] <- Country_names[i]
   data.mundi1[i,"lat"] <- mini.data$lat_country[1]
   data.mundi1[i,"lon"] <- mini.data$lon_country[1]
@@ -249,7 +257,7 @@ data.mundi2 <- data.frame()
 
 for(i in 1:length(Country_names)){
   mini.data <- datos[which(datos$Serotype == "DENV_2" & datos$Country == Country_names[i]),]
-  data.mundi2[i, "Serotipe"] <- mini.data$Serotype[1]
+  data.mundi2[i, "Serotipos"] <- mini.data$Serotype[1]
   data.mundi2[i,"Country_names"] <- Country_names[i]
   data.mundi2[i,"lat"] <- mini.data$lat_country[1]
   data.mundi2[i,"lon"] <- mini.data$lon_country[1]
@@ -262,7 +270,7 @@ data.mundi3 <- data.frame()
 
 for(i in 1:length(Country_names)){
   mini.data <- datos[which(datos$Serotype == "DENV_3" & datos$Country == Country_names[i]),]
-  data.mundi3[i, "Serotipe"] <- mini.data$Serotype[1]
+  data.mundi3[i, "Serotipos"] <- mini.data$Serotype[1]
   data.mundi3[i,"Country_names"] <- Country_names[i]
   data.mundi3[i,"lat"] <- mini.data$lat_country[1]
   data.mundi3[i,"lon"] <- mini.data$lon_country[1]
@@ -275,7 +283,7 @@ data.mundi4 <- data.frame()
 
 for(i in 1:length(Country_names)){
   mini.data <- datos[which(datos$Serotype == "DENV_4" & datos$Country == Country_names[i]),]
-  data.mundi4[i, "Serotipe"] <- mini.data$Serotype[1]
+  data.mundi4[i, "Serotipos"] <- mini.data$Serotype[1]
   data.mundi4[i,"Country_names"] <- Country_names[i]
   data.mundi4[i,"lat"] <- mini.data$lat_country[1]
   data.mundi4[i,"lon"] <- mini.data$lon_country[1]
@@ -288,7 +296,7 @@ mundi1 <- data.frame()
 
 for(i in 1:length(Country_names)){
   mini.data <- datos[which(datos$Serotype == "DENV" & datos$Country == Country_names[i]),]
-  mundi1[i, "Serotipe"] <- mini.data$Serotype[1]
+  mundi1[i, "Serotipos"] <- mini.data$Serotype[1]
   mundi1[i,"Country_names"] <- Country_names[i]
   mundi1[i,"lat"] <- mini.data$lat_country[1]
   mundi1[i,"lon"] <- mini.data$lon_country[1]
@@ -307,11 +315,16 @@ map.world <- map_data(map="world")
 
 pg <- ggplot()+ 
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
-  ggtitle("Localidades reportadas")+
-  geom_point(data= data.mundi, aes(x=lon, y=lat, color=Serotipe),size=1.5, alpha=0.5)+
-  scale_color_manual(values=c("deeppink","green3","turquoise3","mediumblue","purple"))
+  geom_point(data= data.mundi, aes(x=lon, y=lat, color=Serotipos),size=1.5, alpha=0.5)+
+  scale_color_manual(values=c("purple","deeppink","green3","turquoise3","mediumblue"))+
+  ggtitle("Distribución de los serotipos por paises")+
+  theme_tufte()+
+  theme(plot.title = element_text(hjust=0.5))
 
 pg
+
+#"green3","deeppink","turquoise3","mediumblue","purple"
+#"purple","green3","deeppink","turquoise3","mediumblue"
 ```
 **Figura 7.** Mapa-mundi de la distribucion global por paises de los cuatro serotipos. Los cuatro serotipos se encuentran distribuidos por toda la region tropical del mundo.
 
@@ -465,7 +478,8 @@ wordcloud(words = loframe$word, freq = loframe$freq, scale = c(4,.5), min.freq =
 .
 
 ### Mapa mundi Localidades ###
-```{r, echo = FALSE, fig.width=12, fig.height=6, message=FALSE, warning=FALSE}
+```{r, echo = FALSE, fig.width=10, fig.height=6, message=FALSE, warning=FALSE}
+
 location <- which(is.na(datos$Location)==F)
 
 names_location <- unique(datos[which(is.na(datos$Location)==F),9])
@@ -490,7 +504,7 @@ SS <- data.frame()
 
 for(i in 1:length(names_location)){
   mini.data <- datos[which(datos$Serotype == "DENV" & datos$Location == names_location[i]),]
-  SS[i, "Serotype"] <- mini.data$Serotype[1]
+  SS[i, "Serotipos"] <- mini.data$Serotype[1]
   SS[i,"location_names"] <- location_country[i]
   SS[i, "lat"] <- mini.data$lat_location[1]
   SS[i, "lon"] <- mini.data$lon_location[1]
@@ -505,7 +519,7 @@ S1 <- data.frame()
 
 for(i in 1:length(names_location)){
   mini.data <- datos[which(datos$Serotype == "DENV_1" & datos$Location == names_location[i]),]
-  S1[i, "Serotype"] <- mini.data$Serotype[1]
+  S1[i, "Serotipos"] <- mini.data$Serotype[1]
   S1[i,"location_names"] <- location_country[i]
   S1[i, "lat"] <- mini.data$lat_location[1]
   S1[i, "lon"] <- mini.data$lon_location[1]
@@ -520,7 +534,7 @@ S2 <- data.frame()
 
 for(i in 1:length(names_location)){
   mini.data <- datos[which(datos$Serotype == "DENV_2" & datos$Location == names_location[i]),]
-  S2[i, "Serotype"] <- mini.data$Serotype[1]
+  S2[i, "Serotipos"] <- mini.data$Serotype[1]
   S2[i,"location_names"] <- location_country[i]
   S2[i, "lat"] <- mini.data$lat_location[1]
   S2[i, "lon"] <- mini.data$lon_location[1]
@@ -535,7 +549,7 @@ S3 <- data.frame()
 
 for(i in 1:length(names_location)){
   mini.data <- datos[which(datos$Serotype == "DENV_3" & datos$Location == names_location[i]),]
-  S3[i, "Serotype"] <- mini.data$Serotype[1]
+  S3[i, "Serotipos"] <- mini.data$Serotype[1]
   S3[i,"location_names"] <- location_country[i]
   S3[i, "lat"] <- mini.data$lat_location[1]
   S3[i, "lon"] <- mini.data$lon_location[1]
@@ -550,7 +564,7 @@ S4 <- data.frame()
 
 for(i in 1:length(names_location)){
   mini.data <- datos[which(datos$Serotype == "DENV_4" & datos$Location == names_location[i]),]
-  S4[i, "Serotype"] <- mini.data$Serotype[1]
+  S4[i, "Serotipos"] <- mini.data$Serotype[1]
   S4[i,"location_names"] <- location_country[i]
   S4[i, "lat"] <- mini.data$lat_location[1]
   S4[i, "lon"] <- mini.data$lon_location[1]
@@ -568,9 +582,11 @@ map.world <- map_data(map="world")
 
 ggplot()+ 
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
-  geom_point(data= mundi.location, aes(x=lon, y=lat, color=Serotype),size=1.5, alpha=0.5)+
-  scale_color_manual(values=c("deeppink","green3","turquoise3","mediumblue","purple"))
-
+  geom_point(data= mundi.location, aes(x=lon, y=lat, color=Serotipos),size=1.5, alpha=0.5)+
+  scale_color_manual(values=c("purple","deeppink","green3","turquoise3","mediumblue"))+
+  ggtitle("Distribución de los serotipos por localidades")+
+  theme_tufte()+
+  theme(plot.title = element_text(hjust=0.5))
 
 ```
 **Figura 10.** Localidades reportadas para los cuatro serotipos. En comparacion con la **Figura 7.** en esta distribucion por localidaes no se muestran puntos en varios paises de Africa, lo que nos dice que muchos de los casos de virus del Dengue en este continente se reportan sin su localidad. Las regiones que tienen reportado varias localidades son Sur America y Asia.
@@ -642,9 +658,11 @@ for(i in 1:length(years)){
 count_years <- transform(count_years, Year= reorder(Year, -number_year))
 ggplot(data = count_years, aes(x = Year, y = number_year, color=Year)) +
   geom_bar(stat = "identity", fill="white")+
-  labs(x= "Year", y= "Data Number")+
+  labs(x= "Años", y= "Número de datos")+
+  ggtitle("Número de datos por año")+
   scale_color_grey(start= 0.1, end=0.7)+
   theme_classic()+
+  theme(plot.title = element_text(hjust=0.5))+
   theme(legend.position="none")+
   coord_flip()
 
