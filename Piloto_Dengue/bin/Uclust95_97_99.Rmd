@@ -66,7 +66,8 @@ Dis_97 <- Genome[posicion_97,]
 write.csv(Dis_97, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/Disimilares97.csv")    
 
 Dis_97[,2:21]
-
+Dis_97[c(c(2,5,9,10,11))]
+write.csv(Dis_97[c(2,5,9,10,11)], file = "/home/andrea/LSB/Piloto_Dengue/data/tablas/Secuencias_genoma.csv")
 
 ```
 **Tabla 2.** Datos de secuencias del genoma 97% disimilares.
