@@ -216,6 +216,225 @@ mantel(xdis= distED4_loan, ydis= yearED4_loan)
 dist. geografica Vs dist. temporal
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#----------------------------------------------------------------
+## GEN E VS GEOGRAFICA VS TIEMPO (PAIS Y AÑOS)
+
+# distancia de kmer
+Fraccional_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_paan.csv", header = T, row.names = 1)
+
+# distancia geogrfica
+distGE_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist.GE.paan.csv")
+distGE_loan$X <- colnames(distGE_loan[2:131])
+rownames(distGE_loan) <- distGE_loan$X
+distGE_loan <- distGE_loan[2:131]
+
+#dist temporal
+yearE_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_temporalea/yearE_paan.csv")
+yearE_loan$X <- colnames(yearE_loan[2:131])
+rownames(yearE_loan) <- yearE_loan$X
+yearE_loan <- yearE_loan[2:131]
+
+####################
+## Test de Mantel###
+####################
+
+library(vegan)
+
+mantel(xdis= Fraccional_loan, ydis= distGE_loan)
+
+```
+Gen E,Vs paises
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= Fraccional_loan, ydis= yearE_loan)
+
+```
+Gen E, Vs teporal
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= distGE_loan, ydis= yearE_loan)
+
+```
+Geografica pais Vs temporal
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+## GEN E DENV1 VS GEOGRAFICA VS TIEMPO
+
+# distancia de kmer
+FraccionalD1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV1_paan.csv", header = T, row.names = 1)
+
+# distancia geogrfica
+distED1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D1_paan.csv")
+distED1_loan$X <- colnames(distED1_loan[2:39])
+rownames(distED1_loan) <- distED1_loan$X
+distED1_loan <- distED1_loan[2:39]
+
+#dist temporal
+yearED1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_temporalea/yearD1_paan.csv")
+yearED1_loan$X <- colnames(yearED1_loan[2:39])
+rownames(yearED1_loan) <- yearED1_loan$X
+yearED1_loan <- yearED1_loan[2:39]
+
+####################
+## Test de Mantel###
+####################
+
+library(vegan)
+
+mantel(xdis= FraccionalD1_loan, ydis= distED1_loan)
+
+```
+Gen E vs geografica paises
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= FraccionalD1_loan, ydis= yearED1_loan)
+
+```
+Gen E Vs temporal
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= distED1_loan, ydis= yearED1_loan)
+
+```
+Geografia pases Vs temporal
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+## GEN E DENV2 VS GEOGRAFICA VS TIEMPO
+
+# distancia de kmer
+FraccionalD2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV2_paan.csv", header = T, row.names = 1)
+
+# distancia geogrfica
+distED2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D2_paan.csv")
+distED2_loan$X <- colnames(distED2_loan[2:49])
+rownames(distED2_loan) <- distED2_loan$X
+distED2_loan <- distED2_loan[2:49]
+
+#dist temporal
+yearED2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_temporalea/yearD2_paan.csv")
+yearED2_loan$X <- colnames(yearED2_loan[2:49])
+rownames(yearED2_loan) <- yearED2_loan$X
+yearED2_loan <- yearED2_loan[2:49]
+
+####################
+## Test de Mantel###
+####################
+
+library(vegan)
+
+mantel(xdis= FraccionalD2_loan, ydis= distED2_loan)
+
+```
+Gen E DENV2 Vs geografia paises
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= FraccionalD2_loan, ydis= yearED2_loan)
+
+
+```
+Gen e DENV 2 Vs temporal
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= distED2_loan, ydis= yearED2_loan)
+
+
+```
+Geografia paises Vs temporal
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+## GEN E DENV3 VS GEOGRAFICA VS TIEMPO
+
+# distancia de kmer
+FraccionalD3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV3_paan.csv", header = T, row.names = 1)
+
+# distancia geogrfica
+distED3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D3_paan.csv")
+distED3_loan$X <- colnames(distED3_loan[2:24])
+rownames(distED3_loan) <- distED3_loan$X
+distED3_loan <- distED3_loan[2:24]
+
+#dist temporal
+yearED3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_temporalea/yearD3_paan.csv")
+yearED3_loan$X <- colnames(yearED3_loan[2:24])
+rownames(yearED3_loan) <- yearED3_loan$X
+yearED3_loan <- yearED3_loan[2:24]
+
+####################
+## Test de Mantel###
+####################
+
+library(vegan)
+
+mantel(xdis= FraccionalD3_loan, ydis= distED3_loan)
+
+
+```
+Gen E DENV 3 Vs Geografia paises
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= FraccionalD3_loan, ydis= yearED3_loan)
+
+
+```
+Gen E DENV3 Vs temporal
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= distED3_loan, ydis= yearED3_loan)
+
+
+```
+geografia paises Vs temporal
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+## GEN E DENV4 VS GEOGRAFICA VS TIEMPO
+
+# distancia de kmer
+FraccionalD4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV4_paan.csv", header = T, row.names = 1)
+
+# distancia geogrfica
+distED4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D4_paan.csv")
+distED4_loan$X <- colnames(distED4_loan[2:22])
+rownames(distED4_loan) <- distED4_loan$X
+distED4_loan <- distED4_loan[2:22]
+
+#dist temporal
+yearED4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_temporalea/yearD4_paan.csv")
+yearED4_loan$X <- colnames(yearED4_loan[2:22])
+rownames(yearED4_loan) <- yearED4_loan$X
+yearED4_loan <- yearED4_loan[2:22]
+
+####################
+## Test de Mantel###
+####################
+
+library(vegan)
+
+mantel(xdis= FraccionalD4_loan, ydis= distED4_loan)
+
+
+```
+Gen e DENV 4 Vs geografica paises
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= FraccionalD4_loan, ydis= yearED4_loan)
+
+
+```
+Gen E DENV 4 Vs temporal
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+mantel(xdis= distED4_loan, ydis= yearED4_loan)
+
+
+```
+geografia paises Vs temporal
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
 ## GENOMA VS GEOGRAFICA VS TIEMPO (LOCALIDAD Y AÑOS)
 
