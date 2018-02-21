@@ -1,3 +1,10 @@
+#########################################################################################
+###            Análisis de procrustes para datos genéticos (gen E y genoma)        ######
+#####     y geográficos (coordenadas de paises y localidades)del virus del Dengue   #####
+###                                 02- 01 - 18                                     #####
+#########################################################################################
+
+# librerias requeridas
 
 library(vegan)
 library(raster)
@@ -10,7 +17,7 @@ library(raster)
 Dist_genetica_loan <- read.csv("/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_loan.csv", header = T, row.names = 1)
 Dist_genetica_loan <- as.matrix(Dist_genetica_loan)
 
-# distancia geogrfica
+# distancia geografica
 CoordenadasGE_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Coordenadas_loan.csv")
 lon_lat <- CoordenadasGE_loan[,c(4,3)]
 colnames(lon_lat) <- c("long", "lat")
@@ -63,7 +70,7 @@ plot(pro.slv4,kind=2,main=NULL)
 Dist_genetica_paan <- read.csv("/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_paan.csv", header = T, row.names = 1)
 Dist_genetica_paan <- as.matrix(Dist_genetica_paan)
 
-# distancia geogrfica
+# distancia geografica
 CoordenadasGE_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Coordenadas_paan.csv")
 lon_lat <- CoordenadasGE_paan[,c(3,4)]
 
@@ -114,7 +121,7 @@ plot(pro.slv4,kind=2,main=NULL)
 Dist_genetica_paan <- read.csv("/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_paan.csv", header = T, row.names = 1)
 Dist_genetica_paan <- as.matrix(Dist_genetica_paan)
 
-# distancia geogrfica
+# distancia geografica
 CoordenadasGN_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Coordenadas_paan.csv")
 lon_lat <- CoordenadasGN_paan[,c(4,3)]
 
@@ -166,7 +173,7 @@ plot(pro.slv4,kind=2,main=NULL)
 Dist_genetica_loan <- read.csv("/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_loan.csv", header = T, row.names = 1)
 Dist_genetica_loan <- as.matrix(Dist_genetica_loan)
 
-# distancia geogrfica
+# distancia geografica
 CoordenadasGN_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Coordenadas_loan.csv")
 lon_lat <- CoordenadasGN_loan[,c(4,3)]
 
