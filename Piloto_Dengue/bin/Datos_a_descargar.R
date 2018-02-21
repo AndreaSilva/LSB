@@ -1,6 +1,7 @@
 ################################################################################
 ####              Descargar secuencias de Genoma completo                #######
-###                y del Gen E para el virus del Dengue                  #######
+###                y del Gen E del virus del Dengue a partir             #######
+###                          del numero de acceso                       ########
 ################################################################################
 
 ## DESCARGAR BASE DE DATOS DE GENOMA COMPLETO ###
