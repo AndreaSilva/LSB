@@ -54,13 +54,22 @@ library("ggplot2")
 
 plot_serotype <- ggplot(data = serotype[3:7,], aes(x= Name_serotype, y = count_data))+
   geom_bar(stat = "identity", fill="turquoise4")+
-  labs(x= "Serotipos", y= "Numero de datos")+
-  ggtitle("Número de datos por Serotipos")+
+  labs(x= "Serotipos", y= "Número de registros")+
+  ggtitle("Número de registros por Serotipos")+
   theme_minimal()+
-  theme(plot.title = element_text(hjust=0.5))
+  theme(plot.title = element_text(hjust=0.5))+
+  scale_x_discrete(labels=c("DENV","DENV1", "DENV2", "DENV3", "DENV4"))+
+  theme(axis.text.x = element_text(color="Black"),
+          axis.text.y = element_text(color="Black"))+
+  theme(plot.title = element_text(size=14, face = "bold"),
+axis.title.x = element_text(size=12, face="bold"),
+axis.title.y = element_text(size=12, face="bold")
+)
+
+
 
 plot_serotype
-
+  
 ```
 **Figura 1.** Numero de datos en la base de datos por cada serotipo. La base de datos tiene mayor numero de casos reportados del serotipo 1, seguido del serotipo 2, 3 y 4 respectivamente. Tambien en la base de datos hay 428 casos en los que no se reporta su serotipo (DENV).
 
@@ -111,7 +120,13 @@ ggplot(data = Genes.length, aes(x = gene_name, y = gene_count, color=gene_name))
   theme_classic()+
   theme(plot.title = element_text(hjust=0.5))+
   theme(legend.position="none")+
-  coord_flip()
+  coord_flip()+
+  theme(axis.text.x = element_text(color="Black", size = 11),
+          axis.text.y = element_text(color="Black", size = 11))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=14, face="bold"),
+axis.title.y = element_text(size=14, face="bold")
+)
 
 
 ```
@@ -157,7 +172,7 @@ Derecha: Numero de datos que no reporan su localidad Vs Numero de datos que si r
 
 ### Numero de casos reportados por paises ###
 
-```{r, fig.width = 12, fig.height = 12, echo = FALSE}
+```{r, fig.width = 12, fig.height = 18, echo = FALSE}
 Country_names <- unique(datos$Country)
 
 
@@ -174,9 +189,17 @@ ggplot(data = country.length, aes(x = Country_names, y = number_cases, color=Cou
   geom_bar(stat = "identity", fill="white")+
   labs(x= "Country", y= "Data Number")+
   scale_color_grey(start= 0.7, end=0.1)+
+  ggtitle("Número de datos por países")+
   theme_classic()+
+  theme(plot.title = element_text(hjust=0.5))+
   theme(legend.position="none")+
-  coord_flip()
+  coord_flip()+
+  theme(axis.text.x = element_text(color="Black", size = 11),
+          axis.text.y = element_text(color="Black", size = 10))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=14, face="bold"),
+axis.title.y = element_text(size=14, face="bold")
+)
 ```
 **Figura 5.** En la base de datos se reportan 110 paises con casos de Dengue, siendo VietNam, Brasil y Tailandia los paises con mas casos reportados en la base de datos. 
 El numero de casos que no reportan el pais es mayor a 2000. 
@@ -214,12 +237,19 @@ pf <- ggplot()+
   #theme(legend.position="none")+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   geom_point(data= fre.country, aes(x=lon, y=lat, size=number_cases), color="coral1" , alpha=0.5)+
-  scale_size(name="Número de casos")+
-  ggtitle("Número de casos reportados por paises")+
+  scale_size(name="Número de registros")+
+  ggtitle("Número de registros por países")+
   theme_tufte()+
-  theme(plot.title = element_text(hjust=0.5))
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(plot.title = element_text(size=18, face = "bold"),
+axis.title.x = element_text(size=13, face="bold"),
+axis.title.y = element_text(size=13, face="bold"))+
+  theme(legend.text = element_text(size= 13, colour = "black", face = "bold"))+
+  theme(legend.title = element_text(size= 13, face = "bold"))
 
 pf
+
+
 
 ```
 **Figura 6.** Mapa-mundo de numero de casos reportados por paises. El tamaño del circulo indica el numero de casos reportados. Esta grafica al igual que la **Figura 5.** muestra que VietNam, China, India, Brasil, Tailandia son los paises con mayor numero de casos reportados.
@@ -317,9 +347,15 @@ pg <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   geom_point(data= data.mundi, aes(x=lon, y=lat, color=Serotipos),size=1.5, alpha=0.5)+
   scale_color_manual(values=c("purple","deeppink","green3","turquoise3","mediumblue"))+
-  ggtitle("Distribución de los serotipos por paises")+
+  scale_color_manual(labels = c("DENV", "DENV1", "DENV2", "DENV3", "DENV4"), values = c("purple","deeppink","green3","turquoise3","mediumblue"))+
+  ggtitle("Distribución de los serotipos por países")+
   theme_tufte()+
-  theme(plot.title = element_text(hjust=0.5))
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(plot.title = element_text(size=18, face = "bold"),
+  axis.title.x = element_text(size=14, face="bold"),
+  axis.title.y = element_text(size=14, face="bold"))+
+  theme(legend.text = element_text(size= 14, colour = "black", face = "bold"))+
+  theme(legend.title = element_text(size= 14, face = "bold"))
 
 pg
 
@@ -580,14 +616,21 @@ mundi.location <- rbind(SS,S1,S2,S3,S4)
 
 map.world <- map_data(map="world")
 
-ggplot()+ 
+pl <-ggplot()+ 
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   geom_point(data= mundi.location, aes(x=lon, y=lat, color=Serotipos),size=1.5, alpha=0.5)+
   scale_color_manual(values=c("purple","deeppink","green3","turquoise3","mediumblue"))+
+  scale_color_manual(labels = c("DENV", "DENV1", "DENV2", "DENV3", "DENV4"), values = c("purple","deeppink","green3","turquoise3","mediumblue"))+
   ggtitle("Distribución de los serotipos por localidades")+
   theme_tufte()+
-  theme(plot.title = element_text(hjust=0.5))
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(plot.title = element_text(size=18, face = "bold"),
+  axis.title.x = element_text(size=14, face="bold"),
+  axis.title.y = element_text(size=14, face="bold"))+
+  theme(legend.text = element_text(size= 14, colour = "black", face = "bold"))+
+  theme(legend.title = element_text(size= 14, face = "bold"))
 
+pl
 ```
 **Figura 10.** Localidades reportadas para los cuatro serotipos. En comparacion con la **Figura 7.** en esta distribucion por localidaes no se muestran puntos en varios paises de Africa, lo que nos dice que muchos de los casos de virus del Dengue en este continente se reportan sin su localidad. Las regiones que tienen reportado varias localidades son Sur America y Asia.
 
