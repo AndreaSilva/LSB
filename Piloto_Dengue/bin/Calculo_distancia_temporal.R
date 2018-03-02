@@ -1,4 +1,8 @@
+########################################################################################
+####  Calculo del delta absoluto entre los años de registro del virus del Dengue   #####
+########################################################################################
 
+# Funcion para el calculo de delta absoluto entre años
 
 disttemporal <- function(vector){
   distT <- matrix(0,length(vector),length(vector))
@@ -10,6 +14,7 @@ disttemporal <- function(vector){
   return(distT)
 }
 
+# Datos de los años de reporte para secuencias del Gen E Y Genoma de Dengue
 # GEN E #
 # Gen E localidad y ano
 
