@@ -1,5 +1,7 @@
-# Distancias Geograficas
-# point distances
+#####################################################################################
+#            Distancias Geograficas calculadas sobre un elipsoide             #######
+#####                  point distances                                       ########
+#####################################################################################
 
 library(raster)
 
