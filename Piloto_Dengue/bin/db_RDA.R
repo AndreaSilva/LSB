@@ -17,7 +17,7 @@ library(vegan)
 # matriz genetica
 Dist_genetica_loan <- read.csv("/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_loan.csv", header = T, row.names = 1)
 Dist_genetica_loan <- as.matrix(Dist_genetica_loan)
-Dist_genetica_loan <- Dist_genetica_loan+0.15
+Dist_genetica_loan <- Dist_genetica_loan+0.15 # eliminar valores imaginarios
 for(i in 1:nrow(Dist_genetica_loan)){
   Dist_genetica_loan[i,i] <- 0
 }
