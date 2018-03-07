@@ -9,7 +9,7 @@
 # distancia de kmer
 Fraccional_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGE_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_GE_loan.csv")
 distGE_loan$X <- colnames(distGE_loan[2:30])
 rownames(distGE_loan) <- distGE_loan$X
@@ -37,7 +37,7 @@ mantel(xdis= distGE_loan, ydis= yearE_loan)
 # distancia de kmer
 FraccionalD1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV1_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distED1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D1_loan.csv")
 distED1_loan$X <- colnames(distED1_loan[2:7])
 rownames(distED1_loan) <- distED1_loan$X
@@ -65,7 +65,7 @@ mantel(xdis= distED1_loan, ydis= yearED1_loan)
 # distancia de kmer
 FraccionalD2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV2_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distED2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D2_loan.csv")
 distED2_loan$X <- colnames(distED2_loan[2:11])
 rownames(distED2_loan) <- distED2_loan$X
@@ -93,7 +93,7 @@ mantel(xdis= distED2_loan, ydis= yearED2_loan)
 # distancia de kmer
 FraccionalD3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV3_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distED3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D3_loan.csv")
 distED3_loan$X <- colnames(distED3_loan[2:8])
 rownames(distED3_loan) <- distED3_loan$X
@@ -121,7 +121,7 @@ mantel(xdis= distED3_loan, ydis= yearED3_loan)
 # distancia de kmer
 FraccionalD4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV4_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distED4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D4_loan.csv")
 distED4_loan$X <- colnames(distED4_loan[2:7])
 rownames(distED4_loan) <- distED4_loan$X
@@ -149,7 +149,7 @@ mantel(xdis= distED4_loan, ydis= yearED4_loan)
 # distancia de kmer
 Fraccional_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGE_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist.GE.paan.csv")
 distGE_loan$X <- colnames(distGE_loan[2:131])
 rownames(distGE_loan) <- distGE_loan$X
@@ -177,7 +177,7 @@ mantel(xdis= distGE_loan, ydis= yearE_loan)
 # distancia de kmer
 FraccionalD1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV1_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distED1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D1_paan.csv")
 distED1_loan$X <- colnames(distED1_loan[2:39])
 rownames(distED1_loan) <- distED1_loan$X
@@ -205,7 +205,7 @@ mantel(xdis= distED1_loan, ydis= yearED1_loan)
 # distancia de kmer
 FraccionalD2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV2_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distED2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D2_paan.csv")
 distED2_loan$X <- colnames(distED2_loan[2:49])
 rownames(distED2_loan) <- distED2_loan$X
@@ -233,7 +233,7 @@ mantel(xdis= distED2_loan, ydis= yearED2_loan)
 # distancia de kmer
 FraccionalD3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV3_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distED3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D3_paan.csv")
 distED3_loan$X <- colnames(distED3_loan[2:24])
 rownames(distED3_loan) <- distED3_loan$X
@@ -261,7 +261,7 @@ mantel(xdis= distED3_loan, ydis= yearED3_loan)
 # distancia de kmer
 FraccionalD4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/Fraccional_DENV4_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distED4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genE/matrices_geograficas/dist_D4_paan.csv")
 distED4_loan$X <- colnames(distED4_loan[2:22])
 rownames(distED4_loan) <- distED4_loan$X
@@ -290,7 +290,7 @@ mantel(xdis= distED4_loan, ydis= yearED4_loan)
 # distancia de kmer
 Fraccional_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distG_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.GN.loan.csv")
 distG_loan$X <- colnames(distG_loan[2:42])
 rownames(distG_loan) <- distG_loan$X
@@ -318,7 +318,7 @@ mantel(xdis= distG_loan, ydis= yearG_loan)
 # distancia de kmer
 FraccionalD1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_DENV1_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGD1_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.D1.loan.csv")
 distGD1_loan$X <- colnames(distGD1_loan[2:18])
 rownames(distGD1_loan) <- distGD1_loan$X
@@ -346,7 +346,7 @@ mantel(xdis= distGD1_loan, ydis= yearGD1_loan)
 # distancia de kmer
 FraccionalD2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_DENV2_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGD2_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.D2.loan.csv")
 distGD2_loan$X <- colnames(distGD2_loan[2:16])
 rownames(distGD2_loan) <- distGD2_loan$X
@@ -374,7 +374,7 @@ mantel(xdis= distGD2_loan, ydis= yearGD2_loan)
 # distancia de kmer
 FraccionalD3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_DENV3_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGD3_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.D3.loan.csv")
 distGD3_loan$X <- colnames(distGD3_loan[2:6])
 rownames(distGD3_loan) <- distGD3_loan$X
@@ -402,7 +402,7 @@ mantel(xdis= distGD3_loan, ydis= yearGD3_loan)
 # distancia de kmer
 FraccionalD4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_DENV4_loan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGD4_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.D4.loan.csv")
 distGD4_loan$X <- colnames(distGD4_loan[2:5])
 rownames(distGD4_loan) <- distGD4_loan$X
@@ -430,7 +430,7 @@ mantel(xdis= distGD4_loan, ydis= yearGD4_loan)
 # distancia de kmer
 Fraccional_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distG_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.GN.paan.csv")
 distG_paan$X <- colnames(distG_paan[2:84])
 rownames(distG_paan) <- distG_paan$X
@@ -458,7 +458,7 @@ mantel(xdis= distG_paan, ydis= yearG_paan)
 # distancia de kmer
 FraccionalD1_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_DENV1_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGD1_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.D1.paan.csv")
 distGD1_paan$X <- colnames(distGD1_paan[2:29])
 rownames(distGD1_paan) <- distGD1_paan$X
@@ -486,7 +486,7 @@ mantel(xdis= distGD1_paan, ydis= yearGD1_paan)
 # distancia de kmer
 FraccionalD2_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_DENV2_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGD2_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.D2.paan.csv")
 distGD2_paan$X <- colnames(distGD2_paan[2:35])
 rownames(distGD2_paan) <- distGD2_paan$X
@@ -514,7 +514,7 @@ mantel(xdis= distGD2_paan, ydis= yearGD2_paan)
 # distancia de kmer
 FraccionalD3_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_DENV3_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGD3_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.D3.paan.csv")
 distGD3_paan$X <- colnames(distGD3_paan[2:12])
 rownames(distGD3_paan) <- distGD3_paan$X
@@ -542,7 +542,7 @@ mantel(xdis= distGD3_paan, ydis= yearGD3_paan)
 # distancia de kmer
 FraccionalD4_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/Fraccional_DENV4_paan.csv", header = T, row.names = 1)
 
-# distancia geogrfica
+# distancia geografica
 distGD4_paan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Matrices_distancias/matrices_genoma/matrices_geograficas/dist.D4.paan.csv")
 distGD4_paan$X <- colnames(distGD4_paan[2:11])
 rownames(distGD4_paan) <- distGD4_paan$X
