@@ -22,7 +22,7 @@ CoordenadasGE_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secue
 lon_lat <- CoordenadasGE_loan[,c(4,3)]
 colnames(lon_lat) <- c("long", "lat")
 
-dist.GE.loan <- pointDistance(lon_lat, lon_lat, lonlat = T, allpairs = T)
+dist.GE.loan <- pointDistance(lon_lat, lon_lat, lonlat = T, allpairs = T)# distancia geodesica
 colnames(dist.GE.loan) <- CoordenadasGE_loan$Location
 rownames(dist.GE.loan) <- CoordenadasGE_loan$Location
 
