@@ -159,7 +159,7 @@ This information is obtained from the research of coordinates in Google Maps(API
 Description of name place found on Google Maps for each original place of the database.
 
 **17.** Comments (`Comments`):
-Orginal column downloaded from the genbank with the information of country, locality, month and year of registration, as well as the source of isolation of each sample
+Orginal column downloaded from the GenBank with the information of country, locality, month and year of registration, as well as the source of isolation of each sample
 
 ----------------
 
