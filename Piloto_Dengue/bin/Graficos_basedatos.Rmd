@@ -112,11 +112,11 @@ for(i in 1:length(Genes)){
 }
 
 Genes.length <- transform(Genes.length, gene_name= reorder(gene_name, +gene_count))
-ggplot(data = Genes.length, aes(x = gene_name, y = gene_count, color=gene_name)) +
+pgenes <- ggplot(data = Genes.length, aes(x = gene_name, y = gene_count, color=gene_name)) +
   geom_bar(stat = "identity", fill="white")+
-  labs(x= "Genes", y= "Numero de Datos")+
+  labs(x= "Gen-es", y= "Número de Registros")+
   scale_color_grey(start= 0.7, end=0.1)+
-  ggtitle("Número de datos por Gen-es")+
+  ggtitle("Número de registros por Gen-es")+
   theme_classic()+
   theme(plot.title = element_text(hjust=0.5))+
   theme(legend.position="none")+
@@ -128,12 +128,11 @@ axis.title.x = element_text(size=14, face="bold"),
 axis.title.y = element_text(size=14, face="bold")
 )
 
+pgenes
 
 ```
 
-**Figura 3.** Frecuencia de los genes: La mayoria de los casos reportados son secuencias del "Gen E" y "Genoma Completo", seguidos de secuencias de "gen de poliproteína" que son secuencias que tienen mas de un gen pero que en el GenBank no se especifica cuales son. De los genes no estrulturales el gen no estructural 1 "NS1" es el que mas casos tiene.
-
-
+**Figura 3.** Gen-es reportados en la base de datos y número de regitros que presenta cada partición. La mayoria de los registros pertenecen a secuencias del Gen E y del Genoma, seguidos de las secuencias denominadas "gen de poliproteína" que presentan cuatro o mas genes. De los genes no estrulturales el gen no estructural 1 "NS1" presenta mayor número de regitros.
 .
 
 
@@ -172,9 +171,10 @@ Derecha: Numero de datos que no reporan su localidad Vs Numero de datos que si r
 
 ### Numero de casos reportados por paises ###
 
-```{r, fig.width = 12, fig.height = 18, echo = FALSE}
+```{r, fig.width = 12, fig.height = 22, echo = FALSE}
 Country_names <- unique(datos$Country)
-
+library(countrycode)
+library(translateR)
 
 country.length <- data.frame()
 
@@ -185,21 +185,26 @@ for(i in 1:length(Country_names)){
 }
 
 country.length <- transform(country.length, Country_names= reorder(Country_names, +number_cases))
-ggplot(data = country.length, aes(x = Country_names, y = number_cases, color=Country_names)) +
+
+#class(country.length$Country_names)
+
+pp1 <- ggplot(data = country.length, aes(x = Country_names, y = number_cases, color=Country_names)) +
   geom_bar(stat = "identity", fill="white")+
-  labs(x= "Country", y= "Data Number")+
+  labs(x= "Países", y= "Número de Registros")+
   scale_color_grey(start= 0.7, end=0.1)+
-  ggtitle("Número de datos por países")+
+  ggtitle("Número de registros por países")+
   theme_classic()+
   theme(plot.title = element_text(hjust=0.5))+
   theme(legend.position="none")+
   coord_flip()+
-  theme(axis.text.x = element_text(color="Black", size = 11),
-          axis.text.y = element_text(color="Black", size = 10))+
+  theme(axis.text.x = element_text(color="Black", size = 14),
+          axis.text.y = element_text(color="Black", size = 14))+
   theme(plot.title = element_text(size=16, face = "bold"),
 axis.title.x = element_text(size=14, face="bold"),
 axis.title.y = element_text(size=14, face="bold")
 )
+
+pp1
 ```
 **Figura 5.** En la base de datos se reportan 110 paises con casos de Dengue, siendo VietNam, Brasil y Tailandia los paises con mas casos reportados en la base de datos. 
 El numero de casos que no reportan el pais es mayor a 2000. 
@@ -687,7 +692,7 @@ multiplot(p,p1, p2, p3, p4, cols=1)
 
 ### Años ###
 
-```{r, fig.width = 12, fig.height = 12, echo = FALSE}
+```{r, fig.width = 12, fig.height = 18, echo = FALSE}
 years <- unique(datos$Year)
 
 count_years <- data.frame()
@@ -701,13 +706,19 @@ for(i in 1:length(years)){
 count_years <- transform(count_years, Year= reorder(Year, -number_year))
 ggplot(data = count_years, aes(x = Year, y = number_year, color=Year)) +
   geom_bar(stat = "identity", fill="white")+
-  labs(x= "Años", y= "Número de datos")+
-  ggtitle("Número de datos por año")+
+  labs(x= "Años", y= "Número de Registros")+
+  ggtitle("Número de registros por año")+
   scale_color_grey(start= 0.1, end=0.7)+
   theme_classic()+
   theme(plot.title = element_text(hjust=0.5))+
   theme(legend.position="none")+
-  coord_flip()
+  coord_flip()+
+  theme(axis.text.x = element_text(color="Black", size = 14),
+          axis.text.y = element_text(color="Black", size = 14))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=14, face="bold"),
+axis.title.y = element_text(size=14, face="bold")
+)
 
 ```
 **Figura 12.** Frecuencia de los años registrados en la base de datos, siendo el registro mas antiguo del año 1600, y el mas reciente del año 2016. En la grafica se puede observar como en los años mas recientes se ha aumnetado el numero de casos de Dengue que son secuenciados y reportados, cabe recordar que la base de datos fue descargada en el 2016 por lo cual es muy probable que los datos que se tienen de los años 2015 y 2016 no representen la cantidad con la que se cuente en este momento para esos años. Tambien es importante resaltar que mas de 4.000 casos no reportan en año.
@@ -719,7 +730,7 @@ ggplot(data = count_years, aes(x = Year, y = number_year, color=Year)) +
 
 
 
-```{r, echo = FALSE, fig.width=10, fig.height=6}
+```{r, echo = FALSE, fig.width=10, fig.height=8}
 
 DENV <- datos[datos$Serotype=="DENV",]
 years <- unique(DENV$Year)
@@ -734,17 +745,25 @@ for(i in 1:length(years)){
 
 years_denv <- transform(years_denv, Year= reorder(Year, -number_year))
 
-ggplot(data = years_denv, aes(x = Year, y = number_year, color=Year)) +
+arsd <- ggplot(data = years_denv, aes(x = Year, y = number_year, color=Year)) +
   geom_bar(stat = "identity", fill="white")+
-  labs(x= "Year", y= "Number of Registers")+
+  labs(x= "Años", y= "Número de registros")+
   scale_color_grey(start= 0.1, end=0.7)+
   theme_classic()+
   theme(legend.position="none")+
-  ggtitle("Years frecuency for DENV without serotype reported")+
-  coord_flip()
-
+  ggtitle("Años de registros con serotipo desconocido")+
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(legend.position="none")+
+  coord_flip()+
+  theme(axis.text.x = element_text(color="Black", size = 13),
+          axis.text.y = element_text(color="Black", size = 13))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=13, face="bold"),
+axis.title.y = element_text(size=13, face="bold")
+)
+arsd
 ```
-**Figura 13.** Años de los casos no serotificados. Alrededor de la mitad de los casos sin serotipos no reportan su año. En la **Figura 8.** se muestra que estos casos no pertenecen a un solo pais, y en esta figura vemos que tampoco pertenecen a un año especifico, y que tampoco pertenecen a casos viejos o nuevos. 
+**Figura 13.** Años de registros con serotipo desconocido. Alrededor de la mitad de los registros con serotipos desconocido no reportan su año. En la **Figura 8.** se muestra que estos casos no pertenecen a un solo pais, y en esta figura vemos que tampoco pertenecen a un año especifico, y que tampoco pertenecen a casos viejos o nuevos. 
 
 .
 
