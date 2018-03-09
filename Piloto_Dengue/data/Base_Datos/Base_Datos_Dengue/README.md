@@ -2,24 +2,24 @@
 
 ### Description ###
 
-The database "bd_Dengue" contain all the cases registered of the Dengue virus in the GenBank database until September of 2016 generated on the search of key word "Dengue virus[organism]" with Rentrez package in R.
+The database "bd_Dengue" contains all the cases registered of the Dengue virus in the GenBank database until September of 2016 generated on the search of the keyword "Dengue virus[organism]" with Rentrez package in R.
 
-This database have description of the serotype, genotype, gen,
-country (with geographic coordinates), localization (with geographic coordinates), and date of every cases.
+This database  has the description of the serotype, genotype, gen, country (with geographic coordinates), localization (with geographic coordinates), and date of every case.
 
 The database is part of a research about Dengue virus genetics distances using free alignment methods. and their relation with the time and geographic development in the Systematics and Biogeographic laboratory of the Industrial University of Santander, Colombia.
 
 ----------------
 
-The database have the next variables:
+The database has the next variables:
+
 **1.** accession number (`N_Accesion`):
- This column contain the accession number of each case.
+ This column contains the accession number of each case.
 
 **2.** gb title (`Title`):
- This column have the title of gb for each accession number
+ This column has the title of gb for each accession number
 
 **3.** serotype (`Serotype`):
- This column contain the serotype reported for GenBank for each case:
+ This column contains the serotype reported for GenBank for each case:
 
  - Chimeric --> Sequences quimeric designated by NCBI.
  - Clone --> Sequences Clone designated by NCBI.
@@ -31,7 +31,7 @@ The database have the next variables:
  - UNVERIFIED --> Unverified sequences designated by NCBI.
 
 **4.** Genotype (`Genotype`):
- This column contain the Genotype for each serotype of following form:  
+ This column contains the Genotype for each serotype of following form:  
  - **DENV_1:**
  - Cosmopolitan --> Genotype IV
  - I --> Genotype I
@@ -102,13 +102,13 @@ The database have the next variables:
  - prM_M_E --> preMembrane, membrane and envelope genes.
 
 **6.** Length of Sequence (`Size_Sequence`):
- This column contain the Length of the each sequence
+ This column contains the Length of the each sequence
 
 **7.** Country (`Country`):
  This column has names of the country when was reported each case. The cases with NA in this column it not know
 
 **8.** Location (`Location`):
- This column contain the names of the location for each case. This location can be a region, districts, department, or city. The cases with NA in this column it not know
+ This column contains the names of the location for each case. This location can be a region, districts, department, or city. The cases with NA in this column it not know
 
 **9.** Year  (`Year`):
  This column has the year reported for each case. The cases with NA in this column it not know
@@ -130,11 +130,11 @@ The database have the next variables:
  - Dec --> December
  - NA --> it not know.
 
-**11.** country geographical coordinates (lat/lon) (`lat_country` and `lon_country`):
-The geographic coordinates was obtained from the names of the countries using the API Google Maps in R with the script coordenadas.R
+**11.** country geographical coordinates (lat/long) (`lat_country` and `lon_country`):
+The geographic coordinates were obtained from the names of the countries using the API Google Maps in R with the script coordenadas.R
 
 **12.** country localization class (see below)(`locationtype_country`):
-This information is obtained from the research of coordinates in Google Maps(API). This information is a description about the type of geographic coordinates found for Google Maps from the name of the country or localization, it can be three types forms. The following are the different location types:
+This information is obtained from the research of coordinates in Google Maps(API). This information is a description of the type of geographic coordinates found for Google Maps from the name of the country or localization, it can be three types forms. The following are the different location types:
 
  - "ROOFTOP" indicates that the returned result is a precise geocode for which we have location information accurate down to street address precision.
  - "RANGE_INTERPOLATED" indicates that the returned result reflects an approximation (usually on a road) interpolated between two precise points (such as intersections). Interpolated results are generally returned when rooftop geocodes are unavailable for a street address.
@@ -142,13 +142,13 @@ This information is obtained from the research of coordinates in Google Maps(API
  - "APPROXIMATE" indicates that the returned result is approximate.
 
 **13.** country formatted (`formatted_country`):
-Description of name place found for Google Maps for each original place of the database.
+Description of name place found on Google Maps for each original place of the database.
 
-**14.** location geographical coordinates (lat/lon) (`lat_location` and `lon_location`):
-The geographic coordinates was obtained from the names of the localizations and your countries respectively using the API Google Maps in R with the script coordenadas.R
+**14.** location geographical coordinates (lat/long) (`lat_location` and `lon_location`):
+The geographic coordinates were obtained from the names of the localizations and your countries respectively using the API Google Maps in R with the script coordenadas.R
 
 **15.** location localization class (see below) (`locationtype_country`):
-This information is obtained from the research of coordinates in Google Maps(API). This information is a description about the type of geographic coordinates found for Google Maps from the name of the country or localization, it can be three types forms. The following are the different location types:
+This information is obtained from the research of coordinates in Google Maps(API). This information is a description of the type of geographic coordinates found for Google Maps from the name of the country or localization, it can be three types forms. The following are the different location types:
 
  - "ROOFTOP" indicates that the returned result is a precise geocode for which we have location information accurate down to street address precision.
  - "RANGE_INTERPOLATED" indicates that the returned result reflects an approximation (usually on a road) interpolated between two precise points (such as intersections). Interpolated results are generally returned when rooftop geocodes are unavailable for a street address.
@@ -156,7 +156,7 @@ This information is obtained from the research of coordinates in Google Maps(API
  - "APPROXIMATE" indicates that the returned result is approximate.
 
 **16.** location formatted (`formatted_country`):
-Description of name place found for Google Maps for each original place of the database.
+Description of name place found on Google Maps for each original place of the database.
 
 **17.** Comments (`Comments`):
 Orginal column downloaded from the genbank with the information of country, locality, month and year of registration, as well as the source of isolation of each sample
@@ -165,13 +165,13 @@ Orginal column downloaded from the genbank with the information of country, loca
 
 ### How was created this file: ###
 
-- The information of the database was download of GenBank on the search of key word "Dengue virus[organism]" using the Rentrez R package. (Implemented in: `bd_genbank.R`)
+- The information of the database was a download of GenBank on the search of the keyword "Dengue virus[organism]" using the Rentrez R package. (Implemented in: `bd_genbank.R`)
 
 - The columns 'Country', 'Location', 'Year' and 'Month' were generated in base to the column 'Comments' using the functions grepl and math in R with the script `bd_cleaning.R`
 
-- The database was open in `openRefine` for unifiqued the names and remove space and special characters
+- The database was open in `openRefine` for to unify the names and remove space and special characters
 
-- The geographic coordinates was obtained from the names of the countries and locations using the API Google Maps in R with the script `coordenadas.R`
+- The geographic coordinates were obtained from the names of the countries and locations using the API Google Maps in R with the script `coordenadas.R`
 
 ------------------
 ### Version ###
