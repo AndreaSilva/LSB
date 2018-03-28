@@ -1,0 +1,368 @@
+---
+title: "Datos seleccionados del Gen E y del Genoma"
+output: html_notebook
+---
+
+Estas gráficas describen los datos seleccionados del gen E y el Genoma
+
+```{r, fig.width = 10, fig.height = 6,echo = FALSE, message=FALSE, warning=FALSE}
+
+
+
+# GEN E
+
+ids_97 <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Base_Datos/Base_Datos_Dengue/Datos_genE.csv", header = T)
+
+GenE <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Base_Datos/GenE.csv", header = T)
+
+ids_97$N_Accesion <- as.character(ids_97$N_Accesion)
+
+posicion_97 <- vector()
+
+for(i in 1:length(ids_97$N_Accesion)){
+  posicion_97[i] <- which(GenE$N_Accesion==ids_97$N_Accesion[i])
+}
+
+Dis_97_GE <- GenE[posicion_97,]
+
+D1_D <- length(Dis_97_GE[Dis_97_GE$Serotype=="DENV_1",5])
+D2_D <- length(Dis_97_GE[Dis_97_GE$Serotype=="DENV_2",5])
+D3_D <- length(Dis_97_GE[Dis_97_GE$Serotype=="DENV_3",5])
+D4_D <- length(Dis_97_GE[Dis_97_GE$Serotype=="DENV_4",5])
+
+
+data <- c( D1_D, D2_D, D3_D, D4_D)
+
+Name_serotype <- sort(unique(Dis_97_GE$Serotype))
+
+serotype_gene <- data.frame(data, Name_serotype)
+
+# GENOMA
+ids_97G <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Base_Datos/Base_Datos_Dengue/Datos_Genoma.csv", header = T)
+
+Genome <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Base_Datos/Genome.csv", header = T)
+
+ids_97G$N_Accesion <- as.character(ids_97G$N_Accesion)
+
+posicion_97G <- vector()
+
+for(i in 1:length(ids_97G$N_Accesion)){
+  posicion_97G[i] <- which(Genome$N_Accesion==ids_97G$N_Accesion[i])
+}
+
+Dis_97_NOMA <- Genome[posicion_97G,]
+
+D1_D <- length(Dis_97_NOMA[Dis_97_NOMA$Serotype=="DENV_1",5])
+D2_D <- length(Dis_97_NOMA[Dis_97_NOMA$Serotype=="DENV_2",5])
+D3_D <- length(Dis_97_NOMA[Dis_97_NOMA$Serotype=="DENV_3",5])
+D4_D <- length(Dis_97_NOMA[Dis_97_NOMA$Serotype=="DENV_4",5])
+
+
+data <- c( D1_D, D2_D, D3_D, D4_D)
+
+Name_serotype <- sort(unique(Dis_97_NOMA$Serotype))
+
+serotype_genoma <- data.frame(data, Name_serotype)
+
+type <- c("Gen E","Gen E","Gen E","Gen E","Genoma","Genoma","Genoma","Genoma")
+
+serotype <- rbind(serotype_gene,serotype_genoma)
+
+serotype <- cbind(serotype,type)
+
+library("ggplot2")
+
+pgge <- ggplot(data = serotype, aes(x=Name_serotype , y = data, fill=type))+
+  geom_bar(stat = "identity", position=position_dodge())+
+  scale_colour_brewer()+
+  labs(x= "Serotipos", y= "Número de datos")+
+  ggtitle("Número de datos de Gen E y Genoma por serotipos")+
+  #scale_fill_manual(values=c("#339999", "#660099"))+
+  #scale_fill_brewer(palette="Reds") + 
+  theme_minimal()+
+  scale_x_discrete(labels=c("DENV1", "DENV2", "DENV3", "DENV4"))+
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(axis.text.x = element_text(color="Black", size = 12),
+          axis.text.y = element_text(color="Black", size = 12))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=15, face="bold"),
+axis.title.y = element_text(size=15, face="bold")
+)+
+  theme(legend.title = element_blank())+
+  theme(legend.text = element_text(size= 14, colour = "black", face = "bold"))
+
+pgge
+
+```
+**Número de datos del gen E y del genoma por serotipo.** Obtuvimos 130 datos del Gen E, reportados en 42 países en una escala temporal de 1945 a 2014; y 83 datos del Genoma, reportados en 28 países en una escala temporal de 1944 a 2016. Los datos del gen E y del genoma presentan los cuatro serotipos: serotipo 1 (DENV1) con 38 y 28 casos, el serotipo 2 (DENV2) con 48 y 34 casos, el serotipo 3 (DENV3) con 23 y 11 casos, el serotipo 4 (DENV4) con 21 y 10 casos respectivamente.
+
+## Longitud de las Secuencias seleccionadas ##
+```{r, fig.width = 10, fig.height = 6,echo = FALSE, message=FALSE, warning=FALSE}
+# Gen E
+size_genE <- Dis_97_GE$Size_sequence
+
+print("SECUENCIAS GEN E:") 
+
+size_minimumE <- min(size_genE)
+print("Longitud maxima:") 
+size_minimumE 
+
+size_maximumE <- max(size_genE)
+print("Longitud mínima:") 
+size_maximumE
+
+size_mediumE <- mean(size_genE)
+print("Longitud media:") 
+size_mediumE
+
+# Genoma
+size_genome <- Dis_97_NOMA$Size_sequence
+
+print("SECUENCIAS GENOMA:") 
+
+size_minimum <- min(size_genome)
+print("Longitud minima:") 
+size_minimum
+
+size_maximum <- max(size_genome)
+print("Longitud maxima:") 
+size_maximum
+
+size_medium <- mean(size_genome)
+print("Longitud media:") 
+size_medium
+```
+**Gen E** La longitud mínima de las secuencias es 1310 pb, la longitud máxima es 1590 pb y la longitud media es 1486 pb. 
+
+**Genoma** La longitud mínima de las secuencias es de 10175 pb, la longitud máxima es 10736 pb y la longitud media es 10645.
+
+## Paises y Localidades##
+
+#### Gen E: Paises ####
+```{r, fig.width = 10, fig.height = 10,echo = FALSE, message=FALSE, warning=FALSE}
+# Gen E
+country_genE <- Dis_97_GE$Country
+country_genE <- unique(country_genE)
+
+country.lengthE <- data.frame()
+
+for(i in 1:length(country_genE)){
+  country.lengthE[i,"Country_names"] <- country_genE[i]
+  country.lengthE[i, "number_cases"] <- length(Dis_97_GE[which(Dis_97_GE$Country==country_genE[i]),9])
+}
+
+country.lengthE <- transform(country.lengthE, Country_names= reorder(Country_names, +number_cases))
+
+pp1 <- ggplot(data = country.lengthE, aes(x = Country_names, y = number_cases, color=Country_names)) +
+  geom_bar(stat = "identity", fill="white")+
+  labs(x= "Países", y= "Número de Registros")+
+  scale_color_grey(start= 0.7, end=0.1)+
+  ggtitle("Número de registros por países para los datos del Gen E")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(legend.position="none")+
+  coord_flip()+
+  theme(axis.text.x = element_text(color="Black", size = 14),
+          axis.text.y = element_text(color="Black", size = 14))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=14, face="bold"),
+axis.title.y = element_text(size=14, face="bold")
+)
+
+pp1
+
+
+# Genoma
+country_genome <- Dis_97_NOMA$Country
+country_genome <- unique(country_genome)
+```
+
+#### Gen E: Localidades ####
+```{r, echo = FALSE, fig.width=9, fig.height=5}
+
+library(tm)
+library(SnowballC)
+library(wordcloud)
+library("RColorBrewer")
+
+location <- Dis_97_GE[which(is.na(Dis_97_GE$Location)==F),10]
+
+location <- gsub(" ", "", location)
+
+locorpus <- Corpus(VectorSource(location))
+
+toSpace <- content_transformer(function (x , pattern ) gsub(pattern, " ", x))
+locorpus <- tm_map(locorpus, toSpace, "/")
+locorpus <- tm_map(locorpus, toSpace, "-")
+locorpus <- tm_map(locorpus, toSpace, "--")
+
+locorpus <- tm_map(locorpus, content_transformer(tolower))
+
+locorpus <- tm_map(locorpus, removeNumbers)
+
+locorpus <- tm_map(locorpus, removeWords, stopwords('english'))
+
+locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2")) 
+
+locorpus <- tm_map(locorpus, removePunctuation)
+
+locorpus <- tm_map(locorpus, stripWhitespace)
+
+dtm <- TermDocumentMatrix(locorpus)
+lomax <- as.matrix(dtm)
+vcation <- sort(rowSums(lomax),decreasing=TRUE)
+loframe <- data.frame(word = names(vcation),freq=vcation)
+
+
+wp_genE <- wordcloud(words = loframe$word, freq = loframe$freq, scale = c(4,.5), min.freq = 2,
+          max.words=2000, random.order=FALSE, rot.per=0.45,
+          colors=brewer.pal(12, "Paired"))
+
+
+```
+**Países y localidades de datos del gen E.** Los datos del Gen E están reportados en 42 países y 19 localidaesde Asia, África y sudamérica.
+
+#### Genoma: Paises ####
+```{r, fig.width = 10, fig.height = 8,echo = FALSE, message=FALSE, warning=FALSE}
+# Genoma
+country_genome <- Dis_97_NOMA$Country
+country_genome <- unique(country_genome)
+
+country.lengthG <- data.frame()
+
+for(i in 1:length(country_genome)){
+  country.lengthG[i,"Country_names"] <- country_genome[i]
+  country.lengthG[i, "number_cases"] <- length(Dis_97_NOMA[which(Dis_97_NOMA$Country==country_genome[i]),9])
+}
+
+country.lengthE <- transform(country.lengthG, Country_names= reorder(Country_names, +number_cases))
+
+pp1 <- ggplot(data = country.lengthE, aes(x = Country_names, y = number_cases, color=Country_names)) +
+  geom_bar(stat = "identity", fill="white")+
+  labs(x= "Países", y= "Número de Registros")+
+  scale_color_grey(start= 0.7, end=0.1)+
+  ggtitle("Número de registros por países para los datos del Genoma")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(legend.position="none")+
+  coord_flip()+
+  theme(axis.text.x = element_text(color="Black", size = 14),
+          axis.text.y = element_text(color="Black", size = 14))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=14, face="bold"),
+axis.title.y = element_text(size=14, face="bold")
+)
+
+pp1
+
+```
+
+#### Genoma: Localidades ####
+```{r, echo = FALSE, fig.width=9, fig.height=6}
+
+library(tm)
+library(SnowballC)
+library(wordcloud)
+library("RColorBrewer")
+
+location <- Dis_97_NOMA[which(is.na(Dis_97_NOMA$Location)==F),10]
+
+location <- gsub(" ", "", location)
+
+locorpus <- Corpus(VectorSource(location))
+
+toSpace <- content_transformer(function (x , pattern ) gsub(pattern, " ", x))
+locorpus <- tm_map(locorpus, toSpace, "/")
+locorpus <- tm_map(locorpus, toSpace, "-")
+locorpus <- tm_map(locorpus, toSpace, "--")
+
+locorpus <- tm_map(locorpus, content_transformer(tolower))
+
+locorpus <- tm_map(locorpus, removeNumbers)
+
+locorpus <- tm_map(locorpus, removeWords, stopwords('english'))
+
+locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2")) 
+
+locorpus <- tm_map(locorpus, removePunctuation)
+
+locorpus <- tm_map(locorpus, stripWhitespace)
+
+dtm <- TermDocumentMatrix(locorpus)
+lomax <- as.matrix(dtm)
+vcation <- sort(rowSums(lomax),decreasing=TRUE)
+loframe <- data.frame(word = names(vcation),freq=vcation)
+
+
+wp_genome <- wordcloud(words = loframe$word, freq = loframe$freq, scale = c(4,.5), min.freq = 2,
+          max.words=2000, random.order=FALSE, rot.per=0.45,
+          colors=brewer.pal(12, "Paired"))
+
+
+```
+**Países y localidades de datos del genoma.** Los datos del Genoma están reportados en 28 países y 25 localidades de Asia, África y sudamérica.
+
+## Años ##
+```{r, fig.width = 8, fig.height = 8, echo = FALSE}
+years <- unique(Dis_97_GE$Year)
+
+count_yearsE <- data.frame()
+
+for(i in 1:length(years)){
+  count_yearsE[i, "Year"] <- years[i]
+  count_yearsE[i, "number_year"] <- length(Dis_97_GE[which(Dis_97_GE$Year==years[i]),11])
+}
+
+count_yearsE <- transform(count_yearsE, Year= reorder(Year, -number_year))
+ggplot(data = count_yearsE, aes(x = Year, y = number_year, color=Year)) +
+  geom_bar(stat = "identity", fill="white")+
+  labs(x= "Años", y= "Número de Registros")+
+  ggtitle("Número de registros por año para datos del Gen E")+
+  scale_color_grey(start= 0.1, end=0.7)+
+  theme_classic()+
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(legend.position="none")+
+  coord_flip()+
+  theme(axis.text.x = element_text(color="Black", size = 14),
+          axis.text.y = element_text(color="Black", size = 14))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=14, face="bold"),
+axis.title.y = element_text(size=14, face="bold")
+)
+
+```
+**Años reportados en los datos del gen E** Los datos del Gen E contiene una escala temporal desde el año 1945 a 2014.
+
+
+```{r, fig.width = 9, fig.height = 10, echo = FALSE}
+years <- unique(Dis_97_NOMA$Year)
+
+count_yearsG <- data.frame()
+
+for(i in 1:length(years)){
+  count_yearsG[i, "Year"] <- years[i]
+  count_yearsG[i, "number_year"] <- length(Dis_97_NOMA[which(Dis_97_NOMA$Year==years[i]),11])
+}
+
+count_yearsG <- transform(count_yearsG, Year= reorder(Year, -number_year))
+ggplot(data = count_yearsG, aes(x = Year, y = number_year, color=Year)) +
+  geom_bar(stat = "identity", fill="white")+
+  labs(x= "Años", y= "Número de Registros")+
+  ggtitle("Número de registros por año para datos del Genoma")+
+  scale_color_grey(start= 0.1, end=0.7)+
+  theme_classic()+
+  theme(plot.title = element_text(hjust=0.5))+
+  theme(legend.position="none")+
+  coord_flip()+
+  theme(axis.text.x = element_text(color="Black", size = 14),
+          axis.text.y = element_text(color="Black", size = 14))+
+  theme(plot.title = element_text(size=16, face = "bold"),
+axis.title.x = element_text(size=14, face="bold"),
+axis.title.y = element_text(size=14, face="bold")
+)
+
+```
+**Años reportados en los datos del genoma** Los datos del Genoma contiene una escala temporal desde el año 1944 a 2016.
+
+
+
