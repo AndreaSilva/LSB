@@ -14,45 +14,12 @@ dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_des
 
 seq <- dat_seq$seq
 
-#1.1 Secuencias del Gen E Dengue 1 con localidad y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv1.txt", header = T, sep = " ")
-seq <- dat_seq$seq
-
-#1.3 Secuencias del Gen E Dengue 2 con localidad y año
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv2.txt", header = T, sep = " ")
-seq <- dat_seq$seq
-
-#1.4 Secuencias del Gen E Dengue 3 con localidad y año
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv3.txt", header = T, sep = " ")
-seq <- dat_seq$seq
-
-#1.4 Secuencias del Gen E Dengue 4 con localidad y año
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv4.txt", header = T, sep = " ")
-seq <- dat_seq$seq
-
 #-------------------
 
 #1. Secuencias del Gen E con pais y ano
 dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_paan.txt", header= T, sep=" ")
 
 seq <- dat_seq$seq
-
-#1.1 Secuencias del Gen E Dengue 1 con pais y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv1_paan.txt", header = T, sep = " ")
-seq <- dat_seq$seq
-
-#1.3 Secuencias del Gen E Dengue 2 con pais y año
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv2_paan.txt", header = T, sep = " ")
-seq <- dat_seq$seq
-
-#1.4 Secuencias del Gen E Dengue 3 con pais y año
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv3_paan.txt", header = T, sep = " ")
-seq <- dat_seq$seq
-
-#1.4 Secuencias del Gen E Dengue 4 con pais y año
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_denv4_paan.txt", header = T, sep = " ")
-seq <- dat_seq$seq
-
 
 #------------------------------------------------------------------------------------------
 
@@ -62,42 +29,10 @@ seq <- dat_seq$seq
 dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Seq_loan.txt", header= T, sep=" ")
 seq <- dat_seq$seq
 
-#1.1 Secuencias del Genoma Dengue 1 con localidad y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Seq_denv1_loan.txt", header= T, sep=" ")
-seq <- dat_seq$seq
-
-#1.2 Secuencias del Genoma Dengue 2 con localidad y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Seq_denv2_loan.txt", header= T, sep=" ")
-seq <- dat_seq$seq
-
-#1.3 Secuencias del Genoma Dengue 3 con localidad y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Seq_denv3_loan.txt", header= T, sep=" ")
-seq <- dat_seq$seq
-
-#1.4 Secuencias del Genoma Dengue 4 con localidad y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Seq_denv4_loan.txt", header= T, sep=" ")
-seq <- dat_seq$seq
-
 #-------
 
 #2. Secuencias del Genoma con pais y ano
 dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Seq_pa_an.txt", header= T, sep=" ")
-seq <- dat_seq$seq
-
-#2.1 Secuencias del Genoma Dengue 1 con pais y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/seq_denv1_paan.txt", header= T, sep=" ")
-seq <- dat_seq$seq
-
-#2.2 Secuencias del Genoma Dengue 2 con pais y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/seq_denv2_paan.txt", header= T, sep=" ")
-seq <- dat_seq$seq
-
-#2.3 Secuencias del Genoma Dengue 3 con pais y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/seq_denv3_paan.txt", header= T, sep=" ")
-seq <- dat_seq$seq
-
-#2.4 Secuencias del Genoma Dengue 4 con pais y ano
-dat_seq <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/seq_denv4_paan.txt", header= T, sep=" ")
 seq <- dat_seq$seq
 
 # Conteo de k-mers para tripletas k=3
