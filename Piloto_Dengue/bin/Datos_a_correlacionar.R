@@ -3,26 +3,26 @@
 ###############################################################################################
 
 ##############
-##  GEN E  ###
+##  E GENE  ###
 ##############
 
-# Datos del Gen E
+# E Gene Data
 
 dat_genE <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/Disimilares97.csv", header = T)
 
-# Secuencias del Gen E
+# E Gene sequences
 
 seq_genE <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/seq_Disimilaridad97.txt", header= T, sep=" ")
 
-# Datos del gen E que tengan localidad y ano
+# Data of E gene with location and year
 
 lo_an <- which(is.na(dat_genE$Location)==F & is.na(dat_genE$Year)==F)
 
-dat_loan <- dat_genE[lo_an,] 
+dat_loan <- dat_genE[lo_an,]
 
 write.csv(dat_loan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Location_year.csv")
 
-# Secuencias del Gen E que tienen localidad y ano
+# E gene sequences with location and year
 
 position_loan <- vector()
 for(i in 1:length(dat_loan$N_Accesion)){
@@ -34,9 +34,9 @@ seq_genE_loan <- seq_genE[position_loan,]
 write.table(seq_genE_loan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_loan.txt")
 
 #-----------------------------------------
-##  VECTORES DE COORDENADAS GEOGRAFICAS ##
+##  GEOGRAPHICAL COORDINATE VECTORS ##
 
-#GEN E
+# E GENE
 dge_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Location_year.csv", header = T)
 Coordenadas_loan <- dge_loan[,c(12,19,20)]
 
@@ -44,20 +44,20 @@ write.csv(Coordenadas_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencia
 
 #---------------------------------------
 
-## VECTORES DE AÑOS PARA DIST TEMPORAL ##
+## YEARS VECTORS - TEMPORARY DISTANCE ##
 
 year.E.loan <- dat_loan$Year
 write.csv(year.E.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/year_loan.csv")
 
 #----------------------------------
 
-## Gen E con pais y año
+## E Gene with country and year
 
-# Datos del Gen E
+# E gene Data
 
 dat_genE <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/Disimilares97.csv", header = T)
 
-# Secuencias del Gen E
+# E gene sequences
 
 seq_genE <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/seq_Disimilaridad97.txt", header= T, sep=" ")
 
@@ -65,11 +65,11 @@ seq_genE <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_de
 
 lo_an <- which(is.na(dat_genE$Country)==F & is.na(dat_genE$Year)==F)
 
-dat_loan <- dat_genE[lo_an,] 
+dat_loan <- dat_genE[lo_an,]
 
 write.csv(dat_loan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Country_year.csv")
 
-# Secuencias del Gen E que tienen pais y ano
+# E gene sequences with country and year
 
 position_loan <- vector()
 for(i in 1:length(dat_loan$N_Accesion)){
@@ -81,7 +81,7 @@ seq_genE_loan <- seq_genE[position_loan,]
 write.table(seq_genE_loan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Seq_paan.txt")
 
 #-----------------------------------------
-##  VECTORES DE COORDENADAS GEOGRAFICAS ##
+##  GEOGRAPHICAL COORDINATE VECTORS ##
 
 #GEN E
 dge_loan <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/Country_year.csv", header = T)
@@ -91,31 +91,31 @@ write.csv(Coordenadas_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencia
 
 #---------------------------------------
 
-## VECTORES DE AÑOS PARA DIST TEMPORAL ##
+## YEARS VECTORS - TEMPORARY DISTANCE ##
 
 year.E.loan <- dat_loan$Year
 write.csv(year.E.loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/sub_database/year_paan.csv")
 
 ###################
-###  GENOMA    ####
+###  GENOME    ####
 ###################
 
-## 1. Genoma del virus del Dengue con Localidad y Año
+## Genome Data with locality and year
 
-# Datos de Genoma
+# Genoma Data
 dat_genoma <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/Disimilares97.csv", header = T)
 
-# Secuencias del Genoma
+# Genome sequences
 seq_genoma <- read.table(file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/Seq_disimilaridad97.txt", header= T, sep=" ")
 
-# Datos de Genoma que tiene localidad y ano
+# Genoma Data with locality and year
 Genomalo_an <- which(is.na(dat_genoma$Location)==F & is.na(dat_genoma$Year)==F & is.na(dat_genoma$lat_location)==F)
 dat_Genomalo_an <- dat_genoma[Genomalo_an,]
 dat_Genomalo_an <- dat_Genomalo_an[-25,]
 
 write.csv(dat_Genomalo_an, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Location_year.csv")
 
-# Secuencias de Genoma que tiene localidad y ano
+# Genome sequences with locality and year
 posinoma_loan <- vector()
 for(i in 1:length(dat_Genomalo_an$N_Accesion)){
   posinoma_loan[i] <- which(seq_genoma$id==dat_Genomalo_an$N_Accesion[i])
@@ -127,29 +127,26 @@ write.table(seq_genoma_loan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuenc
 
 #-----------------------------
 
-## VECTORESDE COORDENAS GEOGRAFICAS
+## GEOGRAPHICAL COORDINATE VECTORS
 
-#GENOMA
-# LOCALIDAD Y ANO
+#GENOME
+# LOCALITY AND YEAR
 CoordenadasG_loan <- dat_Genomalo_an[,c(11,18,19)]
 write.csv(CoordenadasG_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Coordenadas_loan.csv")
 
 #------------------------------
 
-## VECTORES DE AÑO 
+## YEARS VECTORS - TEMPORARY DISTANCE
 
 year_loan <- dat_Genomalo_an$Year
 write.csv(year_loan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/year_loan.csv")
 
-
-## 2. Genoma del virus del Dengue con Pais y Año
-
-# Datos del genoma que tienen pais y ano
+# Genome Data with country and year
 Genomapa_an <- which(is.na(dat_genoma$Country)==F & is.na(dat_genoma$Year)==F)
 dat_Genoma_paan <- dat_genoma[Genomapa_an,]
 write.csv(dat_Genoma_paan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Country_year.csv")
 
-# Secuencias del genoma con pais y ano
+# Genome sequences with country and year
 posinoma_paan <- vector()
 for(i in 1:length(dat_Genoma_paan$N_Accesion)){
   posinoma_paan[i] <- which(seq_genoma$id==dat_Genoma_paan$N_Accesion[i])
@@ -160,15 +157,15 @@ seq_genoma_paan <- seq_genoma[posinoma_paan,]
 write.table(seq_genoma_paan, file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Seq_pa_an.txt")
 
 #--------------------------
-## Vectores de coordenadas geograficas ##
+## GEOGRAPHICAL COORDINATE VECTORS ##
 
-#PAIS Y ANO 
+#country and year 
 CoordenadasG_paan <- dat_Genoma_paan[,c(10,14,15)]
 write.csv(CoordenadasG_paan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/Coordenadas_paan.csv")
 
 #----------------------------------
 
-## VECTORES DE AÑO ##
+## YEARS VECTORS - TEMPORARY DISTANCE
 
 year_paan <- dat_Genoma_paan$Year
 write.csv(year_paan,file = "/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genoma_completo/sub_database/year_paan.csv")
