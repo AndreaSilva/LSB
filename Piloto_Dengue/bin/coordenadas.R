@@ -1,14 +1,14 @@
 ######################################################################################
-# Obtencion de coordenadas geograficas a partir de nombre del pais y localidad #######
-#                       Usando la API de Google Maps                           #######
-# Codigo tomado y modificado de: https://gist.github.com/josecarlosgonz/6417633 ######
+#   Obtaining geographic coordinates from the name of the country and location #######
+#                        Using the Google Maps API                             #######
+# Code taken and modified from: https://gist.github.com/josecarlosgonz/6417633 ######
 #--------------------------------------------------------------------------------#####
-# Paginas de referencia:                                                            ##
+# Reference web pages:                                                            ##
 # http://www.jose-gonzalez.org/using-google-maps-api-r/#.WF6hL2cX77h                ##
 # https://www.r-bloggers.com/placement-an-r-package-to-access-the-google-maps-api/  ##
 ######################################################################################
 
-# Paquetes requeridos:
+# Required packages:
 
 library(devtools)
 library(placement)
@@ -17,7 +17,7 @@ library(RJSONIO)
 library(plyr)
 library(jsonlite)
 
-# Funcion url para acceder a la API de GoogleMaps
+# url Function to access the GoogleMaps API
 
 url <- function(address, return.call = "json", sensor = "false") {
   root <- "http://maps.google.com/maps/api/geocode/"
@@ -26,9 +26,13 @@ url <- function(address, return.call = "json", sensor = "false") {
 }
 
 
-# Funcion geoCode para extraer las coordenadas en latitud, longitud a partir 
+# Funcion geoCode para extraer las coordenadas en latitud, longitud a partir
 # del nombre de un lugar, asi como el tipo de localización (se explica mas abajo)
 # y el formato de la direccion que ha sido reconocida por GoogleMaps
+
+## GeoCode function to extract the coordinates: latitude, longitude from
+# of the name of a place, as well as the type of location (explained below)
+# and the format of the address that has been recognized by GoogleMaps
 
 geoCode <- function(address,verbose=FALSE) {
   if(verbose) cat(address,"\n")
@@ -72,11 +76,11 @@ head(locations)
 #--------------------------------------------------------------------------------------###
 
 ##################################################
-## Usando los datos de los paises y localidades ##
-## donde se ha reportado el virus del Dengue    ##
+## Using the data of the countries and localities ##
+## where the Dengue virus has been reported    ##
 ##################################################
 
-# Base de datos del virus del Dengue: 
+# Base de datos del virus del Dengue:
 
 datos <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Base_Datos/Base_Datos_Dengue/bd_Dengue.csv", stringsAsFactors = F)
 
@@ -90,6 +94,7 @@ paises <- na.omit(paises)
 length(paises)
 
 #Busqueda de las coordenadas geograficas a partir del vector "paises":
+#Search of the geographical coordinates from the vector "countries":
 
 coordenadas_paises <- ldply(paises, function(x) geoCode(x))
 names(coordenadas_paises)  <- c("lat","lon","location_type", "formatted")
@@ -97,6 +102,7 @@ head(coordenadas_paises)
 nrow(coordenadas_paises)
 
 # Anadir los datos de latitud, longitud como nuevas columnas a la base de datos de Dengue
+# Add latitude, longitude data as new columns to the Dengue database
 
 coordenadas_paises$formatted <- as.character(coordenadas_paises$formatted)
 
@@ -139,14 +145,15 @@ for(i in 1:length(localidad)){
 localidad_pais <- unique(localidad_pais)
 length(localidad_pais)
 
-# Zhejiang(4), 
-# Hyderabad(1, en internet dice que es una ciudad de la India), 
-# Amazonas(1), 
+# Zhejiang(4),
+# Hyderabad(1, en internet dice que es una ciudad de la India),
+# Amazonas(1),
 # Abidjan(1, ya lo modifique en la base de datos)
 # Revizar los gb de Dominica en comentarios
 
 
 # Busqueda de las coordenadas geograficas a partir del vector "localidad_pais":
+# Search of the geographical coordinates from the vector "local_pais":
 
 coordenadas_localidades <- ldply(localidad_pais, function(x) geoCode(x))
 names(coordenadas_localidades)  <- c("lat","lon","location_type", "formatted")
