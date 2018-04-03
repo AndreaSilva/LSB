@@ -1,25 +1,25 @@
 ---
-title: "Datos descargados del Genoma y Gen E del virus del Dengue"
+title: "Data downloaded of the Genome and E Gene of the Dengue virus"
 output: html_notebook
 ---
 
-Estas graficas describen los casos de Virus del Dengue registrados en la base de datos [bd_Dengue] (https://gitlab.com/AndreaSilva/LSB/tree/master/Piloto_Dengue/data/Base_Datos/Base_Datos_Dengue) que reportan el Genoma y el Gen de la envoltura (Gen E). Estos casos cumplen con las siguientes condiciones: 
+These graphs describe the Dengue Virus records present in the database [bd_Dengue] (https://gitlab.com/AndreaSilva/LSB/tree/master/Piloto_Dengue/data/Base_Datos/Base_Datos_Dengue) that report the Genome and the Envelope Gene (Gen E). These cases meet the following conditions:
 
-* No estan designados por el GenBank como:
-     + Quimeras
-     + Clones
-     + No Verificados
-* Reportan el serotipo
-* Reportan el año de registro y/o Reportan el pais
+* They are not designated by GenBank as:
+      + Chimeras
+      + Clones
+      + Not Verified
+* Report the serotype
+* Report the year of registration and Report the country
 
-Genoma:
+Genome:
 
-* Longitud de la secuencia > 10100 pb. Teniendo encuenta que el genoma del virus del Degue es de alrededor de 11.000 pb
-* El GenBank especifique el inicio y final del CDS
+* Length of the sequence> 10100 bp. Taking into account that the genome of the Degue virus is around 11,000 bp
+* The GenBank specifies the beginning and end of the CDS
 
 Gen E:
 
-* Longitud de la secuencias > 1300 pb < 1600 pb. Teniendo encuenta que la longitud del gen E reportada por las secuencias de referencia del GenBnak es de 1485 pb
+* Length of the sequences> 1300 bp <1600 bp. Taking into account that the length of the E gene reported by the GenBnak reference sequences is 1485 bp
 
 
 ### Genoma y Gen E###
@@ -240,14 +240,14 @@ freg.country <- na.omit(freg.country)
 
 map.world <- map_data(map="world")
 
-p <- ggplot()+ 
+p <- ggplot()+
   #theme(legend.position="none")+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   geom_point(data= freg.country, aes(x=lon, y=lat, size=number_cases), color="coral1" , alpha=0.5)+
   ggtitle("Genoma")+
   scale_size(name="Number of cases")
 
-# GEN E 
+# GEN E
 
 
 Country_names <- unique(GenE$Country)
@@ -268,7 +268,7 @@ free.country <- na.omit(free.country)
 
 map.world <- map_data(map="world")
 
-p1 <- ggplot()+ 
+p1 <- ggplot()+
   #theme(legend.position="none")+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   geom_point(data= free.country, aes(x=lon, y=lat, size=number_cases), color="coral1" , alpha=0.5)+
@@ -323,7 +323,7 @@ multiplot(p,p1)
 
 Country_names <- na.omit(unique(Genome$Country))
 
-# Frecuencia de los serotipos en los paises registrados: 
+# Frecuencia de los serotipos en los paises registrados:
 
 # SEROTIPO 1
 
@@ -385,7 +385,7 @@ data.mundi <- na.omit(data.mundi)
 
 map.world <- map_data(map="world")
 
-ggplot()+ 
+ggplot()+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   ggtitle("Paises reportadas para Genoma")+
   geom_point(data= data.mundi, aes(x=lon, y=lat, color=Serotype),size=1.5, alpha=0.5)+
@@ -401,7 +401,7 @@ ggplot()+
 
 Country_names <- na.omit(unique(GenE$Country))
 
-# Frecuencia de los serotipos en los paises registrados: 
+# Frecuencia de los serotipos en los paises registrados:
 
 # SEROTIPO 1
 
@@ -468,7 +468,7 @@ data.mundi <- na.omit(data.mundi)
 
 map.world <- map_data(map="world")
 
-ggplot()+ 
+ggplot()+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   ggtitle("Paises reportadas para Gen E")+
   geom_point(data= data.mundi, aes(x=lon, y=lat, color=Serotype),size=1.5, alpha=0.5)+
@@ -506,7 +506,7 @@ locorpus <- tm_map(locorpus, removeNumbers)
 
 locorpus <- tm_map(locorpus, removeWords, stopwords('english'))
 
-locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2")) 
+locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2"))
 
 locorpus <- tm_map(locorpus, removePunctuation)
 
@@ -530,7 +530,7 @@ wordcloud(words = loframe$word, freq = loframe$freq, scale = c(4,1), min.freq = 
 
 
 ```
-**Figura 8.** Nube de localidades para casos que reportan el Genoma. Las localidades que mas estan reportadas pertenecen a VietNam (Sur de Vietnam con 1092 casos representando casi la totalidad de casos que reporta este país), Cambidia (KCH con 115), Nicaragua (Managua con 323 casos), y  Venezuela (Aragua con 192 casos). 
+**Figura 8.** Nube de localidades para casos que reportan el Genoma. Las localidades que mas estan reportadas pertenecen a VietNam (Sur de Vietnam con 1092 casos representando casi la totalidad de casos que reporta este país), Cambidia (KCH con 115), Nicaragua (Managua con 323 casos), y  Venezuela (Aragua con 192 casos).
 
 
 ### Localidades: Gen E###
@@ -553,7 +553,7 @@ locorpus <- tm_map(locorpus, removeNumbers)
 
 locorpus <- tm_map(locorpus, removeWords, stopwords('english'))
 
-locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2")) 
+locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2"))
 
 locorpus <- tm_map(locorpus, removePunctuation)
 
@@ -662,7 +662,7 @@ mundi.location <- rbind(SG1,SG2,SG3,SG4)
 
 map.world <- map_data(map="world")
 
-ggplot()+ 
+ggplot()+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   geom_point(data= mundi.location, aes(x=lon, y=lat, color=Serotype),size=1.5, alpha=0.5)+
   ggtitle("Localidaes reportadas para Genoma")+
@@ -756,7 +756,7 @@ mundi.location <- rbind(SE1,SE2,SE3,SE4)
 
 map.world <- map_data(map="world")
 
-ggplot()+ 
+ggplot()+
   geom_map(data=map.world, map=map.world, aes(map_id=region, x=long, y=lat), fill="white", colour="black", size=0.5)+
   geom_point(data= mundi.location, aes(x=lon, y=lat, color=Serotype),size=1.5, alpha=0.5)+
   ggtitle("Localidades reportadas para Gen E")+
@@ -775,7 +775,7 @@ ggplot()+
 
 #SG1
 
-p1 <- ggplot()+ 
+p1 <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(x=long, y=lat,map_id=region), fill="white", colour="black", size=0.5)+
   geom_point(data= SG1, aes(x=lon, y=lat),color="turquoise3", size=1.5, alpha=0.5)+
   ggtitle("DENV 1") +
@@ -783,7 +783,7 @@ p1 <- ggplot()+
 
 #SG2
 
-p2 <- ggplot()+ 
+p2 <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(x=long, y=lat,map_id=region), fill="white", colour="black", size=0.5)+
   geom_point(data= SG2, aes(x=lon, y=lat),color="deeppink", size=1.5, alpha=0.5)+
   ggtitle("DENV 2") +
@@ -791,7 +791,7 @@ p2 <- ggplot()+
 
 #SG3
 
-p3 <- ggplot()+ 
+p3 <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(x=long, y=lat,map_id=region), fill="white", colour="black", size=0.5)+
   geom_point(data= SG3, aes(x=lon, y=lat),color="mediumblue", size=1.5, alpha=0.5)+
   ggtitle("DENV 3") +
@@ -799,7 +799,7 @@ p3 <- ggplot()+
 
 #SG4
 
-p4 <- ggplot()+ 
+p4 <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(x=long, y=lat,map_id=region), fill="white", colour="black", size=0.5)+
   geom_point(data= SG4, aes(x=lon, y=lat),color="green3", size=1.5, alpha=0.5)+
   ggtitle("DENV 4") +
@@ -818,7 +818,7 @@ multiplot(p1, p2, p3, p4, cols=1)
 
 #SE1
 
-p1 <- ggplot()+ 
+p1 <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(x=long, y=lat,map_id=region), fill="white", colour="black", size=0.5)+
   geom_point(data= SE1, aes(x=lon, y=lat),color="turquoise3", size=1.5, alpha=0.5)+
   ggtitle("DENV 1") +
@@ -826,7 +826,7 @@ p1 <- ggplot()+
 
 #SE2
 
-p2 <- ggplot()+ 
+p2 <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(x=long, y=lat,map_id=region), fill="white", colour="black", size=0.5)+
   geom_point(data= SE2, aes(x=lon, y=lat),color="deeppink", size=1.5, alpha=0.5)+
   ggtitle("DENV 2") +
@@ -834,7 +834,7 @@ p2 <- ggplot()+
 
 #SE3
 
-p3 <- ggplot()+ 
+p3 <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(x=long, y=lat,map_id=region), fill="white", colour="black", size=0.5)+
   geom_point(data= SE3, aes(x=lon, y=lat),color="mediumblue", size=1.5, alpha=0.5)+
   ggtitle("DENV 3") +
@@ -842,7 +842,7 @@ p3 <- ggplot()+
 
 #SE4
 
-p4 <- ggplot()+ 
+p4 <- ggplot()+
   geom_map(data=map.world, map=map.world, aes(x=long, y=lat,map_id=region), fill="white", colour="black", size=0.5)+
   geom_point(data= SE4, aes(x=lon, y=lat),color="green3", size=1.5, alpha=0.5)+
   ggtitle("DENV 4") +
@@ -912,7 +912,7 @@ Country_year_mas$Yerano <- as.numeric(Country_year_mas$Yerano)
 
 Country_year_mas <- transform(Country_year_mas, Yerano= reorder(Yerano, +Yerano))
 
-ggplot(Country_year_mas, aes(x=Yerano, y=Country)) + 
+ggplot(Country_year_mas, aes(x=Yerano, y=Country)) +
   geom_point(aes(size=Number_cases))+
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
@@ -979,7 +979,7 @@ Country_year_mas$Yerano <- as.numeric(Country_year_mas$Yerano)
 
 Country_year_mas <- transform(Country_year_mas, Yerano= reorder(Yerano, +Yerano))
 
-ggplot(Country_year_mas, aes(x=Yerano, y=Country)) + 
+ggplot(Country_year_mas, aes(x=Yerano, y=Country)) +
   geom_point(aes(size=Number_cases))+
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
