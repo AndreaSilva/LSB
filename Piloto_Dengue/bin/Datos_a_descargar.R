@@ -100,23 +100,24 @@ sequences_dengue <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/bin/descarga
 library(ape)
 library(seqinr)
 
-# Extraigo solo los datos de gen E, que tengan una longitud de la secuencia entre
-# 1300 a 1600 pb , teniendo encuenta que la longitud del gen E reportada por las
-# secuencias de referencia del GenBnak es de 1485 pb
+# Extract the E gene data with a sequence length between
+# 1300 to 1600 bp, taking into account that the length of the E gene reported by the
+# GenBank reference sequences are 1485 bp
 
 Gen_E <- datos[datos$Gene=="E" & datos$Size_sequence>1300 & datos$Size_sequence<1600, ]
 
-# Lista de numeros de acceso
+# List of Accession Numbers
 
 ids <- Gen_E$N_Accesion
 length(ids)
 which(ids=="AB111090")
-# Busqueda de las secuencas por medio de sus numero de accseso
+
+# The search of the sequences from the access number
 
 genE_sequences <- read.GenBank(ids)
 
 genE_sequences_ids <- paste(attr(genE_sequences, "species"), names(genE_sequences), sep = "_")
 
-# Guardando las secuencias
+# Save the sequences
 
 write.dna(genE_sequences,"/home/andrea/LSB/Piloto_Dengue/data/Secuencias_descargadas/Secuencias_genE/Gen_E.fasta", format = "fasta")
