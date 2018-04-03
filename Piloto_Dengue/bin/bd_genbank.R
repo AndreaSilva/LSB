@@ -1,37 +1,37 @@
-########################################################################################
-####             Obtener base de datos de Dengue desde GenBank                     #####
-####           Para el virus de Dengue, usando el paquete rentrez                  #####
-####                                 2016                                          #####
-########################################################################################
+#######################################################################
+####           Obtain Dengue database from GenBank                #####
+####         For the Dengue virus, using the rentrez package      #####
+####                                 2016                         #####
+#######################################################################
 
 
-#paquete rentez
+#libraries required
 library(rentrez)
 
 dengue <- "Dengue virus[organism]"
 
-#busco 40 secuencias de "dengue" en la base de datos nucleotidos de NCBI  
-dengue_search <- entrez_search(db="nuccore", term=dengue, retmax=18389 ,use_history = TRUE) 
+# search the "dengue" records in the NCBI nucleotide database
+dengue_search <- entrez_search(db="nuccore", term=dengue, retmax=18389 ,use_history = TRUE)
 
-#informacion general de la busqueda
+#general information of the search
 dengue_search
 
-#Numero total de registros encontrados
+#Total number of records found
 dengue_search$count
 
-#obtengo los 40 ids de las secuencias buscadas
+#ids of the searched sequences
 dengue_search$ids
 dengue_search$ids[1:30]
 
-#ver que contiene cada busqueda
+#see what each search contains
 dengue_summs_1 <- entrez_summary(db="nuccore", id=dengue_search$ids)
 
-# Creo vector con la informacion adicional que quiero obtener de cada secuencia
+# vector with additional information that I want to obtain from each sequence
 ater <- c("title", "organism", "extra", "caption", "slen", "subname")
 
 #caption: Numeros de accesion
 #organism: organismo tipo de dengue
-#title: titlo del gb 
+#title: titlo del gb
 #extra: da el numero de gi y gb
 #taxid: xref= taxon
 #crearedate: fecha de creacion del genbank
@@ -39,11 +39,21 @@ ater <- c("title", "organism", "extra", "caption", "slen", "subname")
 #subtype: "genotipo, pais, fuente de aislado, fecha de colecta
 #subname: describe a subtype
 
+#caption: Accession numbers
+#organism: type organism of dengue
+#title: titlo del gb
+#extra: gives the number of gi and gb
+#taxid: xref = taxon
+#crearedate: date of creation of the genbank
+#slen: length of the sequence
+#subtype: "genotype, country, source of isolated, date of collection
+#subname: describes subtype
+
 # obtener informacion adicional que describí en el vector anterior
 ejm_1 <- extract_from_esummary(dengue_summs_1,ater, simplify = T)
 unname(ejm)
 
-# Bucle para poner toda la informacion en un dataframe 
+# Loop to put all the information in a dataframe
 datos <- data.frame()
 
 for(i in dengue_search$ids[16760:18389]){
@@ -58,7 +68,7 @@ for(i in dengue_search$ids[16760:18389]){
   #Sys.sleep()
 }
 
-# Guardar datos descargados
+# Save downloaded data
 write.csv(datos, file="/home/andrea/PROYECTO_LSB/Piloto_Dengue/data/compendio_datos.csv")
 write.table(datos, file="/home/andrea/PROYECTO_LSB/Piloto_Dengue/data/total_datos.csv", sep = ";")
 
@@ -94,11 +104,11 @@ write.table(datos, file="/home/andrea/PROYECTO_LSB/Piloto_Dengue/data/total_dato
 #for(i in 1:18424){
 #  datos2[i,"accesion"] <- datos[[i]][1]
 #  datos2[i, "length"] <- attr(datos[[i]],"length")
-#}  
+#}
 
 #guardar datos en un .csv
 #write.table(datos2, file="seqdengue.csv", sep=",")
 
 #annots <- getAnnot(datos[[1]])
-      
+
 #annots[1:20]=="ORGANISM "
