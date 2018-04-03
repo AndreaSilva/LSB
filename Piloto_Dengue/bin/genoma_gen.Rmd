@@ -1,15 +1,15 @@
 ---
-title: "Datos seleccionados del Gen E y del Genoma"
+title: "Selected data of E Gene and Genome"
 output: html_notebook
 ---
 
-Estas gráficas describen los datos seleccionados del gen E y el Genoma
+These graphs describe the selected data of the E gene and the Genome
 
 ```{r, fig.width = 10, fig.height = 6,echo = FALSE, message=FALSE, warning=FALSE}
 
 
 
-# GEN E
+# E GENE
 
 ids_97 <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Base_Datos/Base_Datos_Dengue/Datos_genE.csv", header = T)
 
@@ -37,7 +37,7 @@ Name_serotype <- sort(unique(Dis_97_GE$Serotype))
 
 serotype_gene <- data.frame(data, Name_serotype)
 
-# GENOMA
+# GENOME
 ids_97G <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Base_Datos/Base_Datos_Dengue/Datos_Genoma.csv", header = T)
 
 Genome <- read.csv(file = "/home/andrea/LSB/Piloto_Dengue/data/Base_Datos/Genome.csv", header = T)
@@ -78,7 +78,7 @@ pgge <- ggplot(data = serotype, aes(x=Name_serotype , y = data, fill=type))+
   labs(x= "Serotipos", y= "Número de datos")+
   ggtitle("Número de datos de Gen E y Genoma por serotipos")+
   #scale_fill_manual(values=c("#339999", "#660099"))+
-  #scale_fill_brewer(palette="Reds") + 
+  #scale_fill_brewer(palette="Reds") +
   theme_minimal()+
   scale_x_discrete(labels=c("DENV1", "DENV2", "DENV3", "DENV4"))+
   theme(plot.title = element_text(hjust=0.5))+
@@ -101,38 +101,38 @@ pgge
 # Gen E
 size_genE <- Dis_97_GE$Size_sequence
 
-print("SECUENCIAS GEN E:") 
+print("SECUENCIAS GEN E:")
 
 size_minimumE <- min(size_genE)
-print("Longitud maxima:") 
-size_minimumE 
+print("Longitud maxima:")
+size_minimumE
 
 size_maximumE <- max(size_genE)
-print("Longitud mínima:") 
+print("Longitud mínima:")
 size_maximumE
 
 size_mediumE <- mean(size_genE)
-print("Longitud media:") 
+print("Longitud media:")
 size_mediumE
 
 # Genoma
 size_genome <- Dis_97_NOMA$Size_sequence
 
-print("SECUENCIAS GENOMA:") 
+print("SECUENCIAS GENOMA:")
 
 size_minimum <- min(size_genome)
-print("Longitud minima:") 
+print("Longitud minima:")
 size_minimum
 
 size_maximum <- max(size_genome)
-print("Longitud maxima:") 
+print("Longitud maxima:")
 size_maximum
 
 size_medium <- mean(size_genome)
-print("Longitud media:") 
+print("Longitud media:")
 size_medium
 ```
-**Gen E** La longitud mínima de las secuencias es 1310 pb, la longitud máxima es 1590 pb y la longitud media es 1486 pb. 
+**Gen E** La longitud mínima de las secuencias es 1310 pb, la longitud máxima es 1590 pb y la longitud media es 1486 pb.
 
 **Genoma** La longitud mínima de las secuencias es de 10175 pb, la longitud máxima es 10736 pb y la longitud media es 10645.
 
@@ -202,7 +202,7 @@ locorpus <- tm_map(locorpus, removeNumbers)
 
 locorpus <- tm_map(locorpus, removeWords, stopwords('english'))
 
-locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2")) 
+locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2"))
 
 locorpus <- tm_map(locorpus, removePunctuation)
 
@@ -282,7 +282,7 @@ locorpus <- tm_map(locorpus, removeNumbers)
 
 locorpus <- tm_map(locorpus, removeWords, stopwords('english'))
 
-locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2")) 
+locorpus <- tm_map(locorpus, removeWords, c("blabla1", "blabla2"))
 
 locorpus <- tm_map(locorpus, removePunctuation)
 
@@ -363,6 +363,3 @@ axis.title.y = element_text(size=14, face="bold")
 
 ```
 **Años reportados en los datos del genoma** Los datos del Genoma contiene una escala temporal desde el año 1944 a 2016.
-
-
-
